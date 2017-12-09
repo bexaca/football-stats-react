@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -17,5 +18,18 @@ class App extends Component {
     );
   }
 }
+
+
+const test = (
+    <div className="container">
+        <h1>Nrao</h1>
+    </div>
+)
+
+ReactDOM.render(
+    test,
+    document.getElementById('test')
+);
+
 
 export default App;
