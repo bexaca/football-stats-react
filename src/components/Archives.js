@@ -1,13 +1,13 @@
 import React from 'react';
 
-export class Settings extends React.Component {
+export class Archives extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1>Nrao</h1>
+                <h1 className="text-center">Test Archives</h1>
             </div>
         );
     }
 }
 
-export default Settings;
+export default Archives;
