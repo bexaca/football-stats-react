@@ -3,6 +3,8 @@ import React from 'react';
 //SUPER AGENT
 import request from 'superagent';
 
+import Home from './Home.js';
+
 export class Leagues extends React.Component {
     constructor(props) {
         super(props);
@@ -13,9 +15,11 @@ export class Leagues extends React.Component {
         }
     }
 
-
+        
     componentWillMount() {
-        const url = "http://api.football-data.org/v1/competitions/445/leagueTable";
+        let urlN = window.location.href;
+        var lastChar = urlN.substr(urlN.length - 3);
+        const url = `http://api.football-data.org/v1/competitions/${lastChar}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 
         request
@@ -42,7 +46,6 @@ export class Leagues extends React.Component {
     }
    
     render() {
-        console.log(this.state.leagueStanding)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(
