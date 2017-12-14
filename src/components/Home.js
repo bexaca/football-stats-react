@@ -10,7 +10,6 @@ import {Link} from 'react-router';
 //IMAGES
 import placeholder from '../images/placeholder.png';
 
-
 export class Home extends React.Component {
     
     constructor(props) {
@@ -19,7 +18,8 @@ export class Home extends React.Component {
             response: null,
             count: null,
             name: [],
-            identification: []
+            identification: [],
+            ids: null
         }
     }
 
@@ -51,6 +51,18 @@ export class Home extends React.Component {
                 }
             });
     }
+    
+    testFunction(i) {
+        let leagueId = this.state.identification[i];
+        return leagueId;
+        this.setState({
+            styledata: { 
+                ids: leagueId
+            }
+        })
+    }
+    
+   
    
     render() {
         let leaguesElements = []
@@ -58,7 +70,7 @@ export class Home extends React.Component {
             leaguesElements.push(
                 <div className="col-md-3">
                     <div className="league__block__single">
-                    <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
+                    <Link onClick={() => this.testFunction(i)} to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
                         <img src={placeholder} alt="placeholder" />
                         <h6 className="text-center">{this.state.name[i]}</h6>
                     </Link>

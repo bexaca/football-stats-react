@@ -46,6 +46,7 @@ export class Leagues extends React.Component {
     }
    
     render() {
+        console.log(this.state.ids)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(
