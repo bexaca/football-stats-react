@@ -54,12 +54,6 @@ export class Home extends React.Component {
     
     testFunction(i) {
         let leagueId = this.state.identification[i];
-        return leagueId;
-        this.setState({
-            styledata: { 
-                ids: leagueId
-            }
-        })
     }
     
    
