@@ -18,7 +18,8 @@ export class Home extends React.Component {
         this.state = {
             response: null,
             count: null,
-            name: []
+            name: [],
+            identification: []
         }
     }
 
@@ -35,16 +36,17 @@ export class Home extends React.Component {
                 if (err || !res.ok) {
                     alert('Oh no! error');
                 } else {
-                    console.log(res.body[0].caption)
                     let names = [];
+                    let identifications = [];
                     for(let i=0; i<res.body.length; i++){
                         names.push(res.body[i].caption);
+                        identifications.push(res.body[i].id);
                     }
-                    console.log(names)
                     this.setState({
                         response: res.body,
                         count: res.body.length,
-                        name: names
+                        name: names,
+                        identification: identifications
                     })
                 }
             });
@@ -54,15 +56,15 @@ export class Home extends React.Component {
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(
-            <div className="col-md-3">
-                <div className="league__block__single">
-                <Link to={"/leagues/"} activeClassName={"active-link"}>
-                    <img src={placeholder} alt="placeholder" />
-                </Link>
-                    <h6 className="text-center">{this.state.name[i]}</h6>
+                <div className="col-md-3">
+                    <div className="league__block__single">
+                    <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
+                        <img src={placeholder} alt="placeholder" />
+                        <h6 className="text-center">{this.state.name[i]}</h6>
+                    </Link>
+                    </div>
                 </div>
-            </div>
-                );
+            );
           }
         const response = this.state.response
           if (response != null) {
@@ -70,7 +72,7 @@ export class Home extends React.Component {
                 <div className="container">
                     <div className="row league__block">
                         <div className="col-md-12">
-                            <h2>Choose league</h2>
+                            <h2>Choose a league</h2>
                         </div>
                         {leaguesElements}
                     </div>
