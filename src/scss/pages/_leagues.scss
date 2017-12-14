@@ -1,0 +1,34 @@
+.fixtures__block {
+  .single__match__block{
+    text-align: center;
+    border-bottom: 1px solid $main-color;
+    padding: 10px;
+  }
+  h3{
+    margin: 25px 0;
+  }
+  ul {
+    text-align: center;
+    list-style: none;
+    li {
+      span {
+        color: $main-color;
+      }
+
+    }
+  }
+}
+.statistic__block{
+  ul{
+    list-style: none;
+    li{
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid $main-color;
+      span{
+        color: $main-color;
+      }
+
+    }
+  }
+}

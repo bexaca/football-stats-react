@@ -1,0 +1,53 @@
+.row{
+  margin: 0 0 20px 0;
+}
+.favourite__block {
+  padding: 0 0 50px 0;
+  text-align: center;
+  box-shadow: 2px -3px 20px 0px rgba(35, 51, 55, 0.13);
+  .image__block {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  h2 {
+    font-weight: 700;
+    color: $main-color;
+  }
+}
+
+.league__block {
+  h2 {
+    font-weight: 700;
+    color: $main-color;
+  }
+  text-align: center;
+  .league__block__single a img{
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+    @include transition-mix;
+    &:hover {
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0);
+    }
+  }
+}
+.scorers__block{
+  h2 {
+    font-weight: 700;
+    color: $main-color;
+  }
+  text-align: center;
+  ul{
+    list-style: none;
+    li{
+      padding: 10px;
+      border-bottom: 1px solid $main-color;
+      span{
+        color: $main-color;
+      }
+
+    }
+  }
+}
+

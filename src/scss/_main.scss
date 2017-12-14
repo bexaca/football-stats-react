@@ -3,19 +3,23 @@
 //@import "compass";
 
 // VENDOR
-@import "vendor/_customVariables.scss";
-@import "vendor/_bootstrap.scss";
-@import "vendor/_bootstrap-compass.scss";
+@import "vendor/customVariables";
+@import "vendor/bootstrap";
+@import "vendor/bootstrap-compass";
 
 // BASE
-@import "base/_variables.scss";
-@import "base/_mixins.scss";
-@import "base/_base.scss";
+@import "base/variables";
+@import "base/mixins";
+@import "base/base";
 
 // LAYOUT
-@import "layout/_header.scss";
-@import "layout/_footer.scss";
+@import "layout/header";
+@import "layout/footer";
 
 // COMPONENTS
 
 // PAGES
+
+@import "pages/index";
+@import "pages/leagues";
+

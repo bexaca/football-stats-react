@@ -1,37 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
-import Settings from './components/Settings';
-import Layout from './components/Layout';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import Root from './components/Root';
+import Home from './components/Home';
+import League from './components/League';
+import Team from './components/Team';
+import Player from './components/Player';
 import Archives from './components/Archives';
-import Featured from './components/Featured';
 
 
-//class App extends Component {
-//  render() {
-//    return (
-//      <div className="App">
-//        <header className="App-header">
-//          <img src={logo} className="App-logo" alt="logo" />
-//          <h1 className="App-title">Proba</h1>
-//        </header>
-//      </div>
-//    );
-//  }
-//}
-
+class App extends React.Component {
+  render() {
+    return (
+        <Router history={browserHistory}>
+            <Route path={"/"} component={Root}>
+                <IndexRoute component={Home}></IndexRoute>
+                <Route path={"home"} component={Home} />
+                <Route path={"leagues/:id"} component={League} />
+                <Route path={"team/:id"} component={Team} />
+                <Route path={"player/:id"} component={Player} />
+                <Route path={"archives/:id"} component={Archives} />
+            </Route>
+            <Route path={"home"} component={Home} />
+        </Router>
+    );
+  }
+}
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={Layout}>
-            <IndexRoute component={Featured}></IndexRoute>
-            <Route path="archives" component={Archives}></Route>
-            <Route path="settings" component={Settings}></Route>
-        </Route>
-    </Router>,
-    document.getElementById('test')
+    <App />,
+    document.getElementById('app')
 );
+
+//ReactDOM.render(
+//    <Router history={hashHistory}>
+//        <Route path="/" component={Layout}>
+//            <IndexRoute component={Featured}></IndexRoute>
+//            <Route path="archives" component={Archives}></Route>
+//            <Route path="settings" component={Settings}></Route>
+//        </Route>
+//    </Router>,
+//    document.getElementById('test')
+//);
 
 //export default App;

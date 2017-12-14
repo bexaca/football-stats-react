@@ -44,7 +44,7 @@ export class Archives extends React.Component {
         }
         return (
             <div className="container">
-                <h1 className="text-center"></h1>
+                <h1 className="text-center">undefined</h1>
             </div>
         );
 
