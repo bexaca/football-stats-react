@@ -18,7 +18,7 @@ export class Leagues extends React.Component {
         
     componentWillMount() {
         let urlN = window.location.href;
-        var lastChar = urlN.substr(urlN.length - 3);
+        let lastChar = urlN.substr(urlN.length - 3);
         const url = `http://api.football-data.org/v1/competitions/${lastChar}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 
