@@ -2,6 +2,9 @@ import React from 'react';
 
 import request from 'superagent';
 
+//REACT ROUTER
+import {Link} from 'react-router';
+
 export class LeagueTable extends React.Component {
     constructor(props) {
         super(props);
@@ -43,10 +46,11 @@ export class LeagueTable extends React.Component {
     }
 
     render() {
+        console.log(this.props.route)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(
-                <tr key={i} id="row">
+                <tr key={`table-${i}`} id="row">
                     <td className="pos">{this.state.leagueStanding[i].position}</td>
                     <td className="team">{this.state.leagueStanding[i].teamName}</td>
                     <td className="pts">{this.state.leagueStanding[i].points}</td>

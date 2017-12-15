@@ -61,11 +61,13 @@ export class Home extends React.Component {
    
    
     render() {
+        
         console.log(this.state.response)
         let leaguesElements = []
+        let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(
-                <div key={i} className="col-md-3">
+                <div key={`league-${i}`} className="col-md-3">
                     <div className="league__block__single">
                     <Link onClick={() => this.testFunction(i)} to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
                         <img src={placeholder} alt="placeholder" />
