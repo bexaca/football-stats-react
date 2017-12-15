@@ -1,10 +1,12 @@
 import React from 'react';
 
+import SinglePlayer from './SinglePlayer.js';
+
 export class Player extends React.Component {
     render() {
         return (
             <div>
-                <h3>Players</h3>
+                <SinglePlayer/>
             </div>
         );
     }

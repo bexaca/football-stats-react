@@ -51,9 +51,11 @@ export class Home extends React.Component {
                 }
             });
     }
-    
+
     testFunction(i) {
-        let leagueId = this.state.identification[i];
+        this.setState({
+            ids: this.state.identification[i]
+        })
     }
     
    
