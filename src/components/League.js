@@ -1,19 +1,17 @@
 import React from 'react';
 
-//SUPER AGENT
-import request from 'superagent';
-
-
+//COMPONENTS
 import LeagueTable from './LeagueTable.js';
+import Fixtures from './Fixtures.js';
 
 
 
 export class Leagues extends React.Component {
     render() {
-        const title = "NRAAAAO";
         return (
-            <div>
-                <LeagueTable title={title}/>
+            <div className="container">
+                <LeagueTable />
+                <Fixtures />
             </div>
         );
     }

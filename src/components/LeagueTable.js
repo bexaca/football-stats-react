@@ -2,7 +2,6 @@ import React from 'react';
 
 import request from 'superagent';
 
-
 export class LeagueTable extends React.Component {
     constructor(props) {
         super(props);
@@ -47,7 +46,7 @@ export class LeagueTable extends React.Component {
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(
-                <tr id="row">
+                <tr key={i} id="row">
                     <td className="pos">{this.state.leagueStanding[i].position}</td>
                     <td className="team">{this.state.leagueStanding[i].teamName}</td>
                     <td className="pts">{this.state.leagueStanding[i].points}</td>
@@ -63,7 +62,6 @@ export class LeagueTable extends React.Component {
         const response = this.state.response
         if (response != null) {
             return (
-                <div className="container">
                     <div className="row">
                         <h2 id="Heading" className="league">{this.state.leagueName}</h2>
                         <h3 id="matchday" className="md"></h3>
@@ -84,7 +82,6 @@ export class LeagueTable extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                </div>
             );
         }
         return (

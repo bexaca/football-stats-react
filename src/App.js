@@ -19,7 +19,7 @@ class App extends React.Component {
                 <Route path={"home"} component={Home} />
                 <Route path={"leagues/:id"} component={League} />
                 <Route path={"team/:id"} component={Team} />
-                <Route path={"player/:id"} component={Player} />
+                <Route path={"player/:id"} something="foo" component={Player} />
                 <Route path={"archives/:id"} component={Archives} />
             </Route>
             <Route path={"home"} component={Home} />
