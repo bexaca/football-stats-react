@@ -3,6 +3,11 @@
 
 body {
     -webkit-font-smoothing: antialiased;
+    font-family: Lato;
+}
+h2, h3, h4 {
+    font-weight: 700;
+    color: $main-color;
 }
 
 a {

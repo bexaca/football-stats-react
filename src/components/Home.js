@@ -52,16 +52,11 @@ export class Home extends React.Component {
             });
     }
 
-    testFunction(i) {
-        this.setState({
-            ids: this.state.identification[i]
-        })
-    }
+
     
    
    
     render() {
-        
         console.log(this.state.response)
         let leaguesElements = []
         let leaguesElementsTest = new Map();
@@ -69,7 +64,7 @@ export class Home extends React.Component {
             leaguesElements.push(
                 <div key={`league-${i}`} className="col-md-3">
                     <div className="league__block__single">
-                    <Link onClick={() => this.testFunction(i)} to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
+                    <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
                         <img src={placeholder} alt="placeholder" />
                         <h6 className="text-center">{this.state.name[i]}</h6>
                     </Link>

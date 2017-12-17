@@ -18,9 +18,7 @@ export class Fixtures extends React.Component {
 
 
     componentWillMount() {
-        let urlN = window.location.href;
-        let lastChar = urlN.substr(urlN.length - 3);
-        const url = `http://api.football-data.org/v1/competitions/${lastChar}/fixtures?timeFrame=n7`;
+        const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?timeFrame=n7`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 
         request
@@ -46,7 +44,7 @@ export class Fixtures extends React.Component {
     }
 
     render() {
-        console.log(this.props.route)
+        console.log(this.state.response)
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []

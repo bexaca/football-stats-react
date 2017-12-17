@@ -17,9 +17,7 @@ export class LeagueTable extends React.Component {
 
 
     componentWillMount() {
-        let urlN = window.location.href;
-        let lastChar = urlN.substr(urlN.length - 3);
-        const url = `http://api.football-data.org/v1/competitions/${lastChar}/leagueTable`;
+        const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 
         request
@@ -46,7 +44,6 @@ export class LeagueTable extends React.Component {
     }
 
     render() {
-        console.log(this.props.route)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(

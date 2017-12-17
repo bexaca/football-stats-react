@@ -2896,7 +2896,12 @@ tbody.collapse.in {
 /* ----- MIXINS ------------------------------------------------------------- */
 /* ----- BASE --------------------------------------------------------------- */
 body {
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  font-family: Lato; }
+
+h2, h3, h4 {
+  font-weight: 700;
+  color: #00BFF2; }
 
 a:hover, a:focus, a:active {
   text-decoration: none;
@@ -2976,15 +2981,6 @@ header {
         width: 100%; }
       header nav a:hover {
         color: #00BFF2; }
-      header nav a.active-link {
-        color: #00BFF2; }
-        header nav a.active-link:after {
-          border-bottom: 3px solid #3ea9be;
-          content: "";
-          display: block;
-          margin: 0.25em auto 0;
-          transition: width 250ms ease-in-out 0s;
-          width: 100%; }
 
 /* ----- FOOTER ------------------------------------------------------------- */
 .row {
