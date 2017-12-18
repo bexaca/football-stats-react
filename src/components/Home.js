@@ -7,16 +7,12 @@ import request from 'superagent';
 //REACT ROUTER
 import {Link} from 'react-router';
 
-//REACT ROUTER
-import {observer} from 'mobx-react';
-
-import store from './Store';
-
 //IMAGES
 import placeholder from '../images/placeholder.png';
 
+import {observer, inject} from 'mobx-react'
+@inject('Store')
 @observer
-
 export class Home extends React.Component {
     
     constructor(props) {
@@ -60,18 +56,21 @@ export class Home extends React.Component {
     }
 
 
-    
+    currentMatch(i) {
+        let match = this.state.response[i].currentMatchday;
+        console.log(match)
+    }
    
    
     render() {
-        console.log(this.props.store)
+        console.log(this.props.store.todo[1])
         let leaguesElements = []
         let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(
                 <div key={`league-${i}`} className="col-md-3">
                     <div className="league__block__single">
-                    <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
+                    <Link match={this.state.response[i].currentMatchday} to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
                         <img src={placeholder} alt="placeholder" />
                         <h6 className="text-center">{this.state.name[i]}</h6>
                     </Link>

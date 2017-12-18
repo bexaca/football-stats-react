@@ -26,9 +26,4 @@ class App extends React.Component {
   }
 }
 
-//ReactDOM.render(
-//    <App store={Store}/>,
-//    document.getElementById('app')
-//);
-
 export default App;

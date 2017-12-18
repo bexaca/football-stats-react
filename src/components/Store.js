@@ -1,8 +1,12 @@
 import React from 'react';
-import {autorun, observable} from 'mobx';
+import {autorun, observable, action} from 'mobx';
 
 class Store {
-    @observable todo = ["milk", "eggs"]  
+    @observable todo = ["milk", "eggs"]
+
+    @action addTodo = (tod) => {
+        this.todo.push(tod)
+    }
 }
 
 
