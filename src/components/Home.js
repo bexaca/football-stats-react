@@ -7,8 +7,13 @@ import request from 'superagent';
 //REACT ROUTER
 import {Link} from 'react-router';
 
+//REACT ROUTER
+import {observer} from 'mobx-react';
+
 //IMAGES
 import placeholder from '../images/placeholder.png';
+
+
 
 export class Home extends React.Component {
     
@@ -57,7 +62,6 @@ export class Home extends React.Component {
    
    
     render() {
-        console.log(this.state.response)
         let leaguesElements = []
         let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {

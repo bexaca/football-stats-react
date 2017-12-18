@@ -7,7 +7,7 @@ import Home from './components/Home';
 import League from './components/League';
 import Team from './components/Team';
 import Player from './components/Player';
-import Archives from './components/Archives';
+import Store from './components/Store';
 
 
 class App extends React.Component {
@@ -16,11 +16,10 @@ class App extends React.Component {
         <Router history={browserHistory}>
             <Route path={"/"} component={Root}>
                 <IndexRoute component={Home}></IndexRoute>
-                <Route path={"home"} component={Home} />
+                <Route path={"home"} component={Home} Store={Store}/>
                 <Route path={"leagues/:id"} component={League} />
                 <Route path={"team/:id"} component={Team} />
                 <Route path={"player/:id"} something="foo" component={Player} />
-                <Route path={"archives/:id"} component={Archives} />
             </Route>
             <Route path={"home"} component={Home} />
         </Router>
@@ -29,7 +28,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-    <App />,
+    <App Store = {Store} />,
     document.getElementById('app')
 );
 
