@@ -47,7 +47,8 @@ export class LeagueTable extends React.Component {
     }
 
     render() {
-        console.log(this.props.store.todo[1])
+        console.log(this.props.store.todo[2])
+        
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(
