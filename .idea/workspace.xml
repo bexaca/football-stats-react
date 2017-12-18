@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f3f716f-6d52-4227-9c81-0dd9022bf742" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Fixtures.js" afterPath="$PROJECT_DIR$/src/components/Fixtures.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Home.js" afterPath="$PROJECT_DIR$/src/components/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/League.js" afterPath="$PROJECT_DIR$/src/components/League.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LeagueList.js" afterPath="$PROJECT_DIR$/src/components/LeagueList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LeagueTable.js" afterPath="$PROJECT_DIR$/src/components/LeagueTable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Store.js" afterPath="$PROJECT_DIR$/src/components/Store.js" />
-    </list>
+    <list default="true" id="1f3f716f-6d52-4227-9c81-0dd9022bf742" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -219,7 +208,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-calculator/src/App.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../football-stats-template-git" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
@@ -249,12 +238,12 @@
       <workItem from="1513193668297" duration="5783000" />
       <workItem from="1513284656803" duration="6033000" />
       <workItem from="1513541836292" duration="3837000" />
-      <workItem from="1513612774903" duration="8366000" />
+      <workItem from="1513612774903" duration="8584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24019000" />
+    <option name="totallyTimeSpent" value="24237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
