@@ -63,7 +63,6 @@ export class Home extends React.Component {
    
    
     render() {
-        console.log(this.props.store.todo[1])
         let leaguesElements = []
         let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {
