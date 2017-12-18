@@ -20,7 +20,7 @@ export class Leagues extends React.Component {
         return (
             <div className="container">
                 <LeagueTable thisRoute={this.state.thisRoute} store={store}/>
-                <Fixtures thisRoute={this.state.thisRoute}/>
+                <Fixtures thisRoute={this.state.thisRoute} store={store}/>
             </div>
         );
     }

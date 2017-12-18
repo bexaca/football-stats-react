@@ -3,9 +3,10 @@ import {autorun, observable, action} from 'mobx';
 
 class Store {
     @observable todo = ["milk", "eggs"]
+    @observable match = []
 
-    @action addTodo = (tod) => {
-        this.todo.push(tod)
+    @action matchDay = (match) => {
+        this.match[0] = match
     }
 }
 
