@@ -7,7 +7,6 @@ import Home from './components/Home';
 import League from './components/League';
 import Team from './components/Team';
 import Player from './components/Player';
-import Store from './components/Store';
 
 
 class App extends React.Component {
@@ -16,7 +15,7 @@ class App extends React.Component {
         <Router history={browserHistory}>
             <Route path={"/"} component={Root}>
                 <IndexRoute component={Home}></IndexRoute>
-                <Route path={"home"} component={Home} Store={Store}/>
+                <Route path={"home"} component={Home} />
                 <Route path={"leagues/:id"} component={League} />
                 <Route path={"team/:id"} component={Team} />
                 <Route path={"player/:id"} something="foo" component={Player} />
@@ -27,8 +26,9 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-    <App Store = {Store} />,
-    document.getElementById('app')
-);
+//ReactDOM.render(
+//    <App store={Store}/>,
+//    document.getElementById('app')
+//);
 
+export default App;

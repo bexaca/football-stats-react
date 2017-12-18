@@ -5,6 +5,9 @@ import request from 'superagent';
 //REACT ROUTER
 import {Link} from 'react-router';
 
+import {observer, inject} from 'mobx-react'
+@inject('Store')
+@observer
 export class LeagueTable extends React.Component {
     constructor(props) {
         super(props);
@@ -44,6 +47,7 @@ export class LeagueTable extends React.Component {
     }
 
     render() {
+        console.log(this.props.store.todo[1])
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             tableElements.push(

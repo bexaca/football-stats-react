@@ -1,20 +1,10 @@
 import React from 'react';
-import {autorun, extendObservable} from 'mobx';
+import {autorun, observable} from 'mobx';
 
-export class Store extends React.Component {
-    constructor() {
-        super();
-        extendObservable(this, {
-          todo: ["cake"],
-          filter: ""
-        }); 
-      }
+class Store {
+    @observable todo = ["milk", "eggs"]  
 }
 
-let store = window.store = new Store
 
-export default Store;
-
-autorun(() => {
-//    console.log(store.todo[0])
-})
+const store = new Store();
+export default store;

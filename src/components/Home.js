@@ -10,10 +10,12 @@ import {Link} from 'react-router';
 //REACT ROUTER
 import {observer} from 'mobx-react';
 
+import store from './Store';
+
 //IMAGES
 import placeholder from '../images/placeholder.png';
 
-
+@observer
 
 export class Home extends React.Component {
     
@@ -62,6 +64,7 @@ export class Home extends React.Component {
    
    
     render() {
+        console.log(this.props.store)
         let leaguesElements = []
         let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {

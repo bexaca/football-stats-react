@@ -4,6 +4,7 @@ import React from 'react';
 import LeagueTable from './LeagueTable.js';
 import Fixtures from './Fixtures.js';
 
+import store from './Store'
 
 
 export class Leagues extends React.Component {
@@ -15,14 +16,10 @@ export class Leagues extends React.Component {
         }
     }
 
-
-
-
-
     render() {
         return (
             <div className="container">
-                <LeagueTable thisRoute={this.state.thisRoute}/>
+                <LeagueTable thisRoute={this.state.thisRoute} store={store}/>
                 <Fixtures thisRoute={this.state.thisRoute}/>
             </div>
         );
