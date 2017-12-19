@@ -3361,6 +3361,10 @@ nav ul li a {
       .scorers__block ul li span {
         color: #00BFF2; }
 
+.underline__heading {
+  border-bottom: 1px solid;
+  padding-bottom: 10px; }
+
 .fixtures__block .single__match__block {
   text-align: center;
   border-bottom: 1px solid #00BFF2;

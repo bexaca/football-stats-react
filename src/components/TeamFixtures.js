@@ -8,7 +8,7 @@ import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
 
-export class Fixtures extends React.Component {
+export class TeamFixtures extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ export class Fixtures extends React.Component {
 
 
     componentWillMount() {
-        const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.props.store.match[0]}`;
+        const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 
         request
@@ -66,16 +66,16 @@ export class Fixtures extends React.Component {
             let date = moment(d).format('dddd, MMMM Do YYYY');
             fixtureElements.push(
                 <div key={`days-${j}`} className="col-md-12">
-                    <h3>{date}</h3>
+                    <span>{date}</span>
                 </div>
             )
             for(let i=0; i<this.state.count; i++) {
                 if(datesArr[j] === this.state.date[i].slice(0, 10))
                 fixtureElements.push(
-                    <div key={`games-${i}`} className="single__match__block col-md-12">
-                        <div className="col-md-5">{this.state.fixtures[i].homeTeamName}</div>
-                        <div className="col-md-2"><span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span></div>
-                        <div className="col-md-5">{this.state.fixtures[i].awayTeamName}</div>
+                    <div key={`games-${i}`} className="single__match__block row">
+                        <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
+                        <div className="col-xs-2"><span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span></div>
+                        <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
                     </div>
 
                 );
@@ -86,6 +86,7 @@ export class Fixtures extends React.Component {
             return (
                 <div className="row">
                     <div className="col-md-12">
+                        <h3>Fixtures</h3>
                         <div className="fixtures__block">
                             {fixtureElements}
                         </div>
@@ -101,4 +102,4 @@ export class Fixtures extends React.Component {
     }
 }
 
-export default Fixtures;
+export default TeamFixtures;

@@ -90,19 +90,19 @@ export class LeagueList extends React.Component {
             return (
                     <div>
                         <div className="row text-center">
-                            <h4>Goalkeeper</h4>
+                            <h4 className="underline__heading">Goalkeeper</h4>
                             {keeperElements}
                         </div>
                         <div className="row text-center">
-                            <h4>Defence</h4>
+                            <h4 className="underline__heading">Defence</h4>
                             {defenceElements}
                         </div>
                         <div className="row text-center">
-                            <h4>Midfield</h4>
+                            <h4 className="underline__heading">Midfield</h4>
                             {midfieldElements}
                         </div>
                         <div className="row text-center">
-                            <h4>Forward</h4>
+                            <h4 className="underline__heading">Forward</h4>
                             {forwardElements}
                         </div>
                     </div>
