@@ -91,8 +91,8 @@ export class LeagueList extends React.Component {
             );
         }
         return (
-            <div class="holder">
-                <div class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div className="holder">
+                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         );
     }

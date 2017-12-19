@@ -53,138 +53,34 @@ export class LeagueList extends React.Component {
 
 
     render() {
-        console.log(this.state.response)
         let keeperElements = []
-        let leftBackElements = []
-        let centreBackElements = []
-        let rightBackElements = []
-        let defensiveMidfieldElements = []
-        let centralMidfieldElements = []
-        let leftMidfieldElements = []
-        let rightMidfieldElements = []
-        let leftWingElements = []
-        let rightWingElements = []
-        let atackingMidfieldElements = []
-        let centreForwardElements = []
+        let defenceElements = []
+        let midfieldElements = []
+        let forwardElements = []
+        console.log(this.props.thisRoute)
         for(let i=0; i<this.state.count; i++){
             if(this.state.position[i] === "Keeper"){
                 keeperElements.push(
-                        <div key={`gk-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
+                        <div key={`gk-${i}`} className="col-md-3 col-sm-3">
+                            <h4><Link to={`/team/${this.props.thisRoute}/player/${i}`}  activeClassName={"active-link"}>{this.state.response.players[i].name}</Link></h4>
                         </div>
                 )
-            } else if(this.state.position[i] === "Left-Back"){
-                leftBackElements.push(
-                        <div key={`lb-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
+            } else if(this.state.position[i] === "Left-Back" || this.state.position[i] === "Centre-Back" || this.state.position[i] === "Right-Back"){
+                defenceElements.push(
+                        <div key={`lb-${i}`} className="col-md-3 col-sm-3">
+                            <h4><Link to={`/team/${this.props.thisRoute}/player/${i}`}  activeClassName={"active-link"}>{this.state.response.players[i].name}</Link></h4>
                         </div>
                 )
-            } else if(this.state.position[i] === "Centre-Back"){
-                centreBackElements.push(
-                        <div key={`cb-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
+            }  else if(this.state.position[i] === "Defensive Midfield" || this.state.position[i] === "Central Midfield" || this.state.position[i] === "Left Midfield" || this.state.position[i] === "Right Midfield" || this.state.position[i] === "Attacking Midfield"){
+                midfieldElements.push(
+                        <div key={`dm-${i}`} className="col-md-3 col-sm-3">
+                            <h4><Link to={`/team/${this.props.thisRoute}/player/${i}`}  activeClassName={"active-link"}>{this.state.response.players[i].name}</Link></h4>
                         </div>
                 )
-            } else if(this.state.position[i] === "Right-Back"){
-                rightBackElements.push(
-                        <div key={`rb-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Defensive Midfield"){
-                defensiveMidfieldElements.push(
-                        <div key={`dm-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Central Midfield"){
-                centralMidfieldElements.push(
-                        <div key={`cm-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Left Midfield"){
-               leftMidfieldElements.push(
-                        <div key={`lm-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Right Midfield"){
-               rightMidfieldElements.push(
-                        <div key={`rm-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Left Wing"){
-              leftWingElements.push(
-                        <div key={`lw-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Right Wing"){
-              rightWingElements.push(
-                        <div key={`rw-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Attacking Midfield"){
-              atackingMidfieldElements.push(
-                        <div key={`am-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
-                        </div>
-                )
-            } else if(this.state.position[i] === "Centre-Forward"){
-              centreForwardElements.push(
-                        <div key={`cf-${i}`} className="col-md-3">
-                            <h4>{this.state.response.players[i].name}</h4>
-                            <h5>Date of birth: {this.state.response.players[i].dateOfBirth}</h5>
-                            <h5>Nationality: {this.state.response.players[i].nationality}</h5>
-                            <h5>Contract until: {this.state.response.players[i].contractUntil}</h5>
-                            <h5>Number: {this.state.response.players[i].jerseyNumber}</h5>
+            } else if(this.state.position[i] === "Centre-Forward"  || this.state.position[i] === "Right Wing" || this.state.position[i] === "Left Wing"){
+              forwardElements.push(
+                        <div key={`cf-${i}`} className="col-md-3 col-sm-3">
+                            <h4><Link to={`/team/${this.props.thisRoute}/player/${i}`} activeClassName={"active-link"}>{this.state.response.players[i].name}</Link></h4>
                         </div>
                 )
             } 
@@ -193,53 +89,21 @@ export class LeagueList extends React.Component {
         if (response != null) {
             return (
                     <div>
-                        <div className="col-md-12">
-                            <h4>Goalkeepers</h4>
+                        <div className="row text-center">
+                            <h4>Goalkeeper</h4>
                             {keeperElements}
                         </div>
-                        <div className="col-md-12">
-                            <h4>Left Back</h4>
-                            {leftBackElements}
+                        <div className="row text-center">
+                            <h4>Defence</h4>
+                            {defenceElements}
                         </div>
-                        <div className="col-md-12">
-                            <h4>Centre Back</h4>
-                            {centreBackElements}
+                        <div className="row text-center">
+                            <h4>Midfield</h4>
+                            {midfieldElements}
                         </div>
-                        <div className="col-md-12">
-                            <h4>Right Back</h4>
-                            {rightBackElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Defensive Midfield</h4>
-                            {defensiveMidfieldElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Central Midfield</h4>
-                            {centralMidfieldElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Left Midfield</h4>
-                            {leftMidfieldElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Right Midfield</h4>
-                            {rightMidfieldElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Left Wing</h4>
-                            {leftWingElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Right Wing</h4>
-                            {rightWingElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Attacking Midfield</h4>
-                            {atackingMidfieldElements}
-                        </div>
-                        <div className="col-md-12">
-                            <h4>Centre Forward</h4>
-                            {centreForwardElements}
+                        <div className="row text-center">
+                            <h4>Forward</h4>
+                            {forwardElements}
                         </div>
                     </div>
             );

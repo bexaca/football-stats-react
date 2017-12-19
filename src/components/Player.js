@@ -1,17 +1,29 @@
 import React from 'react';
 
+//COMPONENTS
 import SinglePlayer from './SinglePlayer.js';
 
+import store from './Store'
 
-export class Player extends React.Component {
+
+export class Team extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            thisRoute: this.props.router.params.id
+        }
+    }
+
     render() {
-        console.log(this.props.route)
         return (
-            <div>
-                <SinglePlayer/>
+            <div className="container">
+                <SinglePlayer thisRoute={this.state.thisRoute} store={store}/>
             </div>
         );
     }
+
+
 }
 
-export default Player;
+export default Team;

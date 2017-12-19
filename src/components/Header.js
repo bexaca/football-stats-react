@@ -16,11 +16,17 @@ export class Header extends React.Component {
                     </Link>
                 </div>
                 <nav>
-                    <Link to={"/home"} activeClassName={"active-link"}>Home</Link>
-                    <Link to={"/leagues/" + 5}  activeClassName={"active-link"}>Premier League</Link>
-                    <Link to={"/leagues/" + 7}  activeClassName={"active-link"}>Primera</Link>
-                    <Link to={"/team/" + 6}  activeClassName={"active-link"}>Team</Link>
-                    <Link to={"/player/" + 6}  activeClassName={"active-link"}>Players</Link>
+                  <input type="checkbox" id="nav" className="hidden"/>
+                  <label htmlFor="nav" className="nav-open"><i></i><i></i><i></i></label>
+                  <div className="nav-container">
+                    <ul>
+                      <li><Link to={`/leagues/445`}  activeClassName={"active-link"}>Premier League</Link></li>
+                      <li><Link to={`/leagues/450`}  activeClassName={"active-link"}>Ligue 1</Link></li>
+                      <li><Link to={`/leagues/452`}  activeClassName={"active-link"}>Bundesliga</Link></li>
+                      <li><Link to={`/leagues/456`}  activeClassName={"active-link"}>Seria A</Link></li>
+                      <li><Link to={`/leagues/457`}  activeClassName={"active-link"}>Primeira Liga</Link></li>
+                    </ul>
+                  </div>
                 </nav>
             </header>
         );
