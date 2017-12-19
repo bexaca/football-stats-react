@@ -44,7 +44,7 @@ export class Fixtures extends React.Component {
                         fixtures: res.body.fixtures,
                         count: res.body.count,
                         date: date,
-                        result: result
+                        result: result,
                     })
                 }
             });
@@ -94,8 +94,8 @@ export class Fixtures extends React.Component {
             );
         }
         return (
-            <div className="container">
-                <h1 className="text-center">Fetching</h1>
+            <div className="holder">
+                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         );
     }

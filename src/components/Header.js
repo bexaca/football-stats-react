@@ -19,7 +19,7 @@ export class Header extends React.Component {
                     <Link to={"/home"} activeClassName={"active-link"}>Home</Link>
                     <Link to={"/leagues/" + 5}  activeClassName={"active-link"}>Premier League</Link>
                     <Link to={"/leagues/" + 7}  activeClassName={"active-link"}>Primera</Link>
-                    <Link to={"/leagues/" + 6}  activeClassName={"active-link"}>Calcio</Link>
+                    <Link to={"/team/" + 6}  activeClassName={"active-link"}>Team</Link>
                     <Link to={"/player/" + 6}  activeClassName={"active-link"}>Players</Link>
                 </nav>
             </header>

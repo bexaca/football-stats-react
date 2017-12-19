@@ -14,7 +14,8 @@ export class LeagueTable extends React.Component {
         this.state = {
             response: null,
             leagueName: null,
-            leagueStanding: []
+            leagueStanding: [],
+            teamUrl: []
         }
     }
 
@@ -31,29 +32,34 @@ export class LeagueTable extends React.Component {
                 if (err || !res.ok) {
                     alert('Oh no! error');
                 } else {
-                    let names = [];
-                    let identifications = [];
-                    for(let i=0; i<res.body.length; i++){
-                        names.push(res.body[i].caption);
-                        identifications.push(res.body[i].id);
+                    let teamId = [];
+                    for(let i=0; i<res.body.standing.length; i++){
+                        teamId.push(res.body.standing[i]._links.team.href);
                     }
                     this.setState({
                         response: res.body,
                         leagueName: res.body.leagueCaption,
-                        leagueStanding: res.body.standing
+                        leagueStanding: res.body.standing,
+                        teamUrl: teamId
                     })
                 }
             });
     }
 
     render() {
-        console.log(this.props.store.match)
+        console.log(this.state.response)
+        console.log(this.state.teamUrl)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
+            let teamLink = this.state.teamUrl[i];
+            let teamId = teamLink.split('teams/')[1];
             tableElements.push(
                 <tr key={`table-${i}`} id="row">
                     <td className="pos">{this.state.leagueStanding[i].position}</td>
-                    <td className="team">{this.state.leagueStanding[i].teamName}</td>
+                    <td className="team">
+                        <Link to={`/team/${teamId}`} activeClassName={"active-link"}>{this.state.leagueStanding[i].teamName}
+                        </Link>
+                    </td>
                     <td className="pts">{this.state.leagueStanding[i].points}</td>
                     <td className="p">{this.state.leagueStanding[i].playedGames}</td>
                     <td className="gs">{this.state.leagueStanding[i].goals}</td>
@@ -90,8 +96,8 @@ export class LeagueTable extends React.Component {
             );
         }
         return (
-            <div className="container">
-                <h1 className="text-center">Fetching</h1>
+            <div className="holder">
+                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         );
     }

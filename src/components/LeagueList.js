@@ -91,8 +91,8 @@ export class LeagueList extends React.Component {
             );
         }
         return (
-            <div className="container">
-                <h1 className="text-center">Fetching</h1>
+            <div class="holder">
+                <div class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
         );
     }
