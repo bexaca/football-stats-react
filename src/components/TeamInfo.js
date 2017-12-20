@@ -54,6 +54,7 @@ export class LeagueList extends React.Component {
             localStorage.setItem("clubName", this.state.clubName);
             localStorage.setItem("logo", this.state.crestUrl);
             localStorage.setItem("teamId", this.props.thisRoute);
+            this.props.store.favoriteAdd(this.state.clubName, this.state.crestUrl, this.props.thisRoute)
     }
 
     render() {

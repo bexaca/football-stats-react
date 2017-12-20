@@ -57,10 +57,10 @@ export class TeamForm extends React.Component {
     
 
     render() {
-        console.log(this.state.response)
         let formElements = []
         let formCount = this.props.store.formCount
         let teamName = this.props.store.name
+        this.props.store.formMaxFunc(this.state.status.length)
         for(let i=0; i<this.state.status.length; i++){
             if(this.state.status[i].result.goalsHomeTeam > this.state.status[i].result.goalsAwayTeam && this.state.status[i].homeTeamName === teamName){
                 formElements.push(

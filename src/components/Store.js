@@ -6,7 +6,11 @@ class Store {
     @observable match = null
     @observable name = null
     @observable formCount = 5
-
+    @observable formMax = null
+    @observable clubName = localStorage.getItem("clubName")
+    @observable crestUrl = localStorage.getItem("logo")
+    @observable teamId = localStorage.getItem("teamId")
+     
     @action matchDay = (match) => {
         this.match = match
     }
@@ -20,8 +24,27 @@ class Store {
             this.formCount--
         }
     }
+    @action formMaxFunc = (formMax) => {
+        this.formMax = formMax
+    }
     @action formMoreFunc = () => {
-        this.formCount++
+        if(this.formCount === this.formMax){
+            console.log(this.formCount)
+            console.log(this.formMax)
+            this.formCount = this.formMax
+        }else{
+            this.formCount++
+        }
+    }
+    @action favoriteDel = () => {
+        this.clubName = null
+        this.crestUrl = null
+        this.teamId = null
+    }
+    @action favoriteAdd = (clubName, crestUrl, teamId) => {
+        this.clubName = clubName
+        this.crestUrl = crestUrl
+        this.teamId = teamId
     }
 }
 

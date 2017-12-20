@@ -9,18 +9,14 @@ import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
 export class LeagueTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            response: null,
-            leagueName: null,
-            leagueStanding: [],
-            teamUrl: [],
-            matchDay: null
-        }
+    state = {
+        response: null,
+        leagueName: null,
+        leagueStanding: [],
+        teamUrl: [],
+        matchDay: null
     }
-
-
+    
     componentWillMount() {
         const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";

@@ -43,14 +43,16 @@ export class FavoriteTeam extends React.Component {
     }
     
     favoriteTeamRemove() {
-            localStorage.clear();
+        localStorage.clear();
+        this.props.store.favoriteDel();
     }
 
     render() {
+        console.log(this.props.store.clubName)
         const response = this.state.response
-        const crestUrl = localStorage.getItem("logo");
-        const clubName = localStorage.getItem("clubName");
-        const teamId = localStorage.getItem("teamId");
+        const crestUrl = this.props.store.crestUrl
+        const clubName = this.props.store.clubName
+        const teamId = this.props.store.teamId
         let divStyle = {
           backgroundImage: `url(${crestUrl})`
         };
