@@ -4,6 +4,7 @@ import React from 'react';
 import PlayerPosition from './PlayerPosition.js';
 import TeamInfo from './TeamInfo.js';
 import TeamFixtures from './TeamFixtures.js';
+import TeamForm from './TeamForm.js';
 
 import store from './Store'
 
@@ -23,6 +24,7 @@ export class Team extends React.Component {
                 <TeamInfo thisRoute={this.state.thisRoute} store={store}/>
                 <PlayerPosition thisRoute={this.state.thisRoute} store={store}/>
                 <TeamFixtures thisRoute={this.state.thisRoute} store={store}/>
+                <TeamForm thisRoute={this.state.thisRoute} store={store}/>
             </div>
         );
     }

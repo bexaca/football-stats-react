@@ -38,20 +38,26 @@ export class LeagueList extends React.Component {
                 if (err || !res.ok) {
                     alert('Oh no! error');
                 } else {
-                    
                     this.setState({
                         response: res.body,
                         clubName: res.body.name,
                         crestUrl: res.body.crestUrl,
                         nickName: res.body.shortName
-                        
                     })
+                    this.props.store.teamName(res.body.name)
                 }
             });
     }
 
+    
+    favoriteTeamAdd() {
+            localStorage.setItem("clubName", this.state.clubName);
+            localStorage.setItem("logo", this.state.crestUrl);
+            localStorage.setItem("teamId", this.props.thisRoute);
+    }
 
     render() {
+        console.log(this.state.response)
         let imgUrl = this.state.crestUrl
         let divStyle = {
           backgroundImage: `url(${imgUrl})`
@@ -60,6 +66,7 @@ export class LeagueList extends React.Component {
         if (response != null) {
             return (
                     <div>
+                        <span onClick={() => this.favoriteTeamAdd()}>Favorite</span>
                         <div className="image__block"
                              style={divStyle}>
                         </div>

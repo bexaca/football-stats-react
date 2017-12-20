@@ -16,17 +16,31 @@ export class Fixtures extends React.Component {
             fixtures: [],
             count: null,
             date: [],
-            result: []
+            result: [],
+            matchDay: null
         }
     }
 
 
     componentWillMount() {
-        const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.props.store.match[0]}`;
+        const urlTable = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
-
         request
-            .get(url)
+            .get(urlTable)
+            .set('X-Auth-Token', token)
+            .set('accept', 'json')
+            .end((err, res) => {
+                if (err || !res.ok) {
+                    alert('Oh no! error');
+                } else {
+                    this.props.store.matchDay(res.body.matchday)
+                }
+            });
+        console.log(this.props.store.match)
+        const urlFixture = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.props.store.match}`;
+        console.log(urlFixture)
+        request
+            .get(urlFixture)
             .set('X-Auth-Token', token)
             .set('accept', 'json')
             .end((err, res) => {
@@ -48,10 +62,9 @@ export class Fixtures extends React.Component {
                     })
                 }
             });
-    }
-
+          }
     render() {
-        console.log(this.state.response)
+        
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []

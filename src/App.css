@@ -3388,6 +3388,38 @@ nav ul li a {
     .statistic__block ul li span {
       color: #00BFF2; }
 
+.form__loose {
+  padding: 10px;
+  background-color: red;
+  color: white;
+  text-transform: uppercase; }
+
+.form__draw {
+  padding: 10px;
+  background-color: orange;
+  color: white;
+  text-transform: uppercase; }
+
+.form__win {
+  padding: 10px;
+  background-color: green;
+  color: white;
+  text-transform: uppercase; }
+
+.form__less {
+  cursor: pointer;
+  background: red;
+  color: white;
+  padding: 0px 10px 4px;
+  margin: 5px; }
+
+.form__more {
+  cursor: pointer;
+  background: green;
+  color: white;
+  padding: 0px 10px 4px;
+  margin: 5px; }
+
 .App {
   text-align: center; }
 
