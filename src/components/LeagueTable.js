@@ -1,13 +1,20 @@
+//REACT
 import React from 'react';
 
+//SUPER AGENT
 import request from 'superagent';
 
 //REACT ROUTER
 import {Link} from 'react-router';
 
+//COMPONENTS
+import Preloader from './Preloader.js'
+
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
+
 export class LeagueTable extends React.Component {
     state = {
         response: null,
@@ -74,7 +81,6 @@ export class LeagueTable extends React.Component {
             return (
                     <div className="row">
                         <h2 id="Heading" className="league">{this.state.leagueName}</h2>
-                        <h3 id="matchday" className="md"></h3>
                         <table className="table table-striped table-responsive timg" id="league-table">
                             <thead>
                             <tr>
@@ -95,9 +101,7 @@ export class LeagueTable extends React.Component {
             );
         }
         return (
-            <div className="holder">
-                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            </div>
+            <Preloader />
         );
     }
 }

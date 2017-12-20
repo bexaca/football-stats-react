@@ -1,5 +1,7 @@
+//REACT
 import React from 'react';
 
+//COMPONENTS
 import Header from './Header'
 
 export class Root extends React.Component {

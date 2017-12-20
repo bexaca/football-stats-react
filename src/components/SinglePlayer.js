@@ -4,17 +4,15 @@ import React from 'react';
 //SUPER AGENT
 import request from 'superagent';
 
-//REACT ROUTER
-import {Link} from 'react-router';
+//COMPONENTS
+import Preloader from './Preloader.js'
 
-//IMAGES
-import placeholder from '../images/placeholder.png';
-
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
-export class SinglePlayer extends React.Component {
 
+export class SinglePlayer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +21,6 @@ export class SinglePlayer extends React.Component {
             players: []
         }
     }
-
 
     componentWillMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute[0]}/players`;
@@ -78,9 +75,7 @@ export class SinglePlayer extends React.Component {
             );
         }
         return (
-            <div className="holder">
-                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            </div>
+            <Preloader />
         );
     }
 }

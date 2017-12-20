@@ -1,47 +1,15 @@
 //REACT
 import React from 'react';
 
-//SUPER AGENT
-import request from 'superagent';
-
 //REACT ROUTER
 import {Link} from 'react-router';
 
-//IMAGES
-import placeholder from '../images/placeholder.png';
-
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
+
 export class FavoriteTeam extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            response: null
-        }
-    }
-
-
-    componentWillMount() {
-        const url = "http://api.football-data.org/v1/competitions";
-        const token = "3edb1bdd0041436ebc77c561b73e5e07";
-
-        request
-            .get(url)
-            .set('X-Auth-Token', token)
-            .set('accept', 'json')
-            .end((err, res) => {
-                if (err || !res.ok) {
-                    alert('Oh no! error');
-                } else {
-                    this.setState({
-                        response: res.body
-                    })
-                }
-            });
-    }
-    
     favoriteTeamRemove() {
         localStorage.clear();
         this.props.store.favoriteDel();
@@ -49,7 +17,6 @@ export class FavoriteTeam extends React.Component {
 
     render() {
         console.log(this.props.store.clubName)
-        const response = this.state.response
         const crestUrl = this.props.store.crestUrl
         const clubName = this.props.store.clubName
         const teamId = this.props.store.teamId
@@ -68,7 +35,7 @@ export class FavoriteTeam extends React.Component {
                             <div className="col-md-12">
                                 <div className="info__block">
                                     <h4>League</h4>
-                                    <a href="#">League link here</a>
+                                    <a href="">League link here</a>
                                 </div>
                                 <div className="info__block">
                                     <h4>Team</h4>
@@ -78,7 +45,7 @@ export class FavoriteTeam extends React.Component {
                                 </div>
                                 <div className="info__block">
                                     <h4>Current table position</h4>
-                                    <a href="#">2</a>
+                                    <a href="">2</a>
                                 </div>
                             </div>
                         </div>

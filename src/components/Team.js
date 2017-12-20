@@ -1,3 +1,4 @@
+//REACT
 import React from 'react';
 
 //COMPONENTS
@@ -6,8 +7,8 @@ import TeamInfo from './TeamInfo.js';
 import TeamFixtures from './TeamFixtures.js';
 import TeamForm from './TeamForm.js';
 
+//MOBX
 import store from './Store'
-
 
 export class Team extends React.Component {
 

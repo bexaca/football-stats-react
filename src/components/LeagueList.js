@@ -7,12 +7,17 @@ import request from 'superagent';
 //REACT ROUTER
 import {Link} from 'react-router';
 
+//COMPONENTS
+import Preloader from './Preloader.js'
+
 //IMAGES
 import placeholder from '../images/placeholder.png';
 
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
+
 export class LeagueList extends React.Component {
 
     constructor(props) {
@@ -66,7 +71,6 @@ export class LeagueList extends React.Component {
     render() {
         console.log(this.props.store.match)
         let leaguesElements = []
-        let leaguesElementsTest = new Map();
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(
                 <div key={`league-${i}`} className="col-md-3">
@@ -91,9 +95,7 @@ export class LeagueList extends React.Component {
             );
         }
         return (
-            <div className="holder">
-                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            </div>
+            <Preloader />
         );
     }
 }

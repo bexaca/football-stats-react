@@ -7,14 +7,15 @@ import request from 'superagent';
 //REACT ROUTER
 import {Link} from 'react-router';
 
-//IMAGES
-import placeholder from '../images/placeholder.png';
+//COMPONENTS
+import Preloader from './Preloader.js'
 
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
-export class LeagueList extends React.Component {
 
+export class LeagueList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -109,9 +110,7 @@ export class LeagueList extends React.Component {
             );
         }
         return (
-            <div className="holder">
-                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            </div>
+            <Preloader />
         );
     }
 }

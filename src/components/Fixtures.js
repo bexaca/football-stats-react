@@ -1,9 +1,16 @@
+//REACT
 import React from 'react';
 
+//SUPERAGENT
 import request from 'superagent';
 
+//MOMENT DATE
 import moment from 'moment';
 
+//COMPONENTS
+import Preloader from './Preloader.js'
+
+//MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
@@ -107,9 +114,7 @@ export class Fixtures extends React.Component {
             );
         }
         return (
-            <div className="holder">
-                <div className="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            </div>
+            <Preloader />
         );
     }
 }

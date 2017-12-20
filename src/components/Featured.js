@@ -1,3 +1,4 @@
+//REACT
 import React from 'react';
 
 export class Featured extends React.Component {

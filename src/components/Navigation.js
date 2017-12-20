@@ -1,6 +1,11 @@
+//REACT
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+//REACT ROUTER
 import {Link} from 'react-router';
+
+//FAVICON
 import Favicon from 'react-favicon';
 
 class Navigation extends Component {

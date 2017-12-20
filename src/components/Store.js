@@ -1,5 +1,6 @@
-import React from 'react';
-import {autorun, observable, action} from 'mobx';
+
+//MOBX
+import {observable, action} from 'mobx';
 
 class Store {
     @observable todo = ["milk", "eggs"]

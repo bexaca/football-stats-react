@@ -1,6 +1,13 @@
+//REACT
 import React from 'react';
-import logo from '../logo.svg';
+
+//REACT ROUTER
 import {Link} from 'react-router';
+
+//IMAGES
+import logo from '../logo.svg';
+
+//FAVICON
 import Favicon from 'react-favicon';
 import favico from '../favicon.png'
 

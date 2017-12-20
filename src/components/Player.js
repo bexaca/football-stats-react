@@ -1,10 +1,11 @@
+//REACT
 import React from 'react';
 
 //COMPONENTS
 import SinglePlayer from './SinglePlayer.js';
 
+//MOBX
 import store from './Store'
-
 
 export class Team extends React.Component {
 
