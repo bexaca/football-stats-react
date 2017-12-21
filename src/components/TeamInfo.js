@@ -14,15 +14,12 @@ import {observer, inject} from 'mobx-react'
 
 export class LeagueList extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             response: null,
             clubName: null,
             crestUrl: null,
             nickName: null
         }
-    }
 
 
     componentWillMount() {

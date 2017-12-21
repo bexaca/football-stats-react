@@ -2956,7 +2956,8 @@ header {
   width: 100%; }
 
 nav {
-  float: right; }
+  float: right;
+  line-height: 1.25; }
 
 nav ul {
   float: right; }

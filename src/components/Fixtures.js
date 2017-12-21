@@ -16,9 +16,7 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class Fixtures extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             response: null,
             fixtures: [],
             count: null,
@@ -26,8 +24,6 @@ export class Fixtures extends React.Component {
             result: [],
             matchDay: null
         }
-    }
-
 
     componentWillMount() {
         const urlTable = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
@@ -43,9 +39,7 @@ export class Fixtures extends React.Component {
                     this.props.store.matchDay(res.body.matchday)
                 }
             });
-        console.log(this.props.store.match)
         const urlFixture = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.props.store.match}`;
-        console.log(urlFixture)
         request
             .get(urlFixture)
             .set('X-Auth-Token', token)

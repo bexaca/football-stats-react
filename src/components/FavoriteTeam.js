@@ -16,7 +16,6 @@ export class FavoriteTeam extends React.Component {
     }
 
     render() {
-        console.log(this.props.store.clubName)
         const crestUrl = this.props.store.crestUrl
         const clubName = this.props.store.clubName
         const teamId = this.props.store.teamId

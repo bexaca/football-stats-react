@@ -10,11 +10,8 @@ import store from './Store'
 
 export class Leagues extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            thisRoute: this.props.router.params.id
-        }
+    state = {
+        thisRoute: this.props.router.params.id
     }
 
     render() {

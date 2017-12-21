@@ -16,6 +16,7 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class LeagueTable extends React.Component {
+    
     state = {
         response: null,
         leagueName: null,

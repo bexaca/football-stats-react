@@ -13,14 +13,11 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class SinglePlayer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             response: null,
             playerId: null,
             players: []
         }
-    }
 
     componentWillMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute[0]}/players`;

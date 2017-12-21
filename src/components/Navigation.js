@@ -9,12 +9,9 @@ import {Link} from 'react-router';
 import Favicon from 'react-favicon';
 
 class Navigation extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             children: null
         }
-    }
     
   render() {
     return (

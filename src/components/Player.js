@@ -9,12 +9,9 @@ import store from './Store'
 
 export class Team extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             thisRoute: this.props.router.params.id
         }
-    }
 
     render() {
         return (

@@ -16,16 +16,13 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class TeamFixtures extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             response: null,
             fixtures: [],
             count: null,
             date: [],
             result: []
         }
-    }
 
 
     componentWillMount() {

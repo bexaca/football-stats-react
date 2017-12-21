@@ -10,11 +10,8 @@ import store from './Store'
 
 export class Home extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             thisRoute: this.props.router.params.id
-        }
     }
 
     render() {
@@ -23,10 +20,10 @@ export class Home extends React.Component {
                 <FavoriteTeam thisRoute={this.state.thisRoute} store={store}/>
                 <LeagueList thisRoute={this.state.thisRoute} store={store}/>
             </div>
+            
         );
     }
-
-
+    
 }
 
 export default Home;

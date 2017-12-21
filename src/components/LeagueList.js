@@ -20,17 +20,13 @@ import {observer, inject} from 'mobx-react'
 
 export class LeagueList extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            response: null,
-            count: null,
-            name: [],
-            identification: [],
-            ids: null
-        }
+    state = {
+        response: null,
+        count: null,
+        name: [],
+        identification: [],
+        ids: null
     }
-
 
     componentWillMount() {
         const url = "http://api.football-data.org/v1/competitions";

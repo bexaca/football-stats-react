@@ -16,14 +16,11 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class LeagueList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
             response: null,
             count: null,
             position: []
         }
-    }
 
 
     componentWillMount() {
