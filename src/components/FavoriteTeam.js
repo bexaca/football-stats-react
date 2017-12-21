@@ -10,12 +10,10 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class FavoriteTeam extends React.Component {
+    
     favoriteTeamRemove() {
         localStorage.clear();
-        this
-            .props
-            .store
-            .favoriteDel();
+        this.props.store.favoriteDel();
     }
 
     render() {
