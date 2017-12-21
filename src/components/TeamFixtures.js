@@ -107,8 +107,7 @@ export class TeamFixtures extends React.Component {
                         <div key={`games-${i}`} className="single__match__block row">
                             <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
                             <div className="col-xs-2">
-                                <span>{this.state.result[i].goalsHomeTeam}
-                                    - {this.state.result[i].goalsAwayTeam}</span>
+                                <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
                             </div>
                             <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
                         </div>

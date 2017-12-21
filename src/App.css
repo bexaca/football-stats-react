@@ -3412,7 +3412,7 @@ nav ul li a {
   background-repeat: no-repeat; }
 
 .favourite__block {
-  padding: 0 0 50px 0;
+  padding: 20px 0 50px 0;
   text-align: center;
   box-shadow: 2px -3px 20px 0px rgba(35, 51, 55, 0.13); }
   .favourite__block h2 {
@@ -3507,6 +3507,9 @@ nav ul li a {
   color: white;
   padding: 0px 10px 4px;
   margin: 5px; }
+
+.team__info {
+  padding-top: 20px; }
 
 .App {
   text-align: center; }

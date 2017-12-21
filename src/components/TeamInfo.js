@@ -80,7 +80,7 @@ export class LeagueList extends React.Component {
         const response = this.state.response
         if (response != null) {
             return (
-                <div>
+                <div className="team__info">
                     {clubFavButton}
                     <div className="image__block" style={divStyle}></div>
                     <h2 className="text-center">{this.state.clubName} - {this.state.nickName}</h2>

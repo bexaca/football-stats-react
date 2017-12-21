@@ -4,6 +4,9 @@ import React from 'react';
 //REACT ROUTER
 import {Link} from 'react-router';
 
+//IMAGES
+import placeholderTeam from '../images/placeholder_team.png';
+
 //MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
@@ -23,10 +26,19 @@ export class FavoriteTeam extends React.Component {
         const competitionId = this.props.store.competitionId
         const teamPosition = this.props.store.teamPosition
         const leagueName = this.props.store.leagueName
-        let divStyle = {
-            backgroundImage: `url(${crestUrl})`
-        };
-        if (crestUrl != null) {
+        const localStorageCrest = localStorage.getItem("logo")
+        let divStyle = null;
+        if (clubName != null) {
+            if(localStorageCrest === "null"){
+                console.log('nrao')
+                divStyle = {
+                    backgroundImage: `url(${placeholderTeam})`
+                }
+            } else{
+                    divStyle = {
+                        backgroundImage: `url(${crestUrl})`
+                    }
+            }
             return (
                 <div className="row">
                     <div className="favourite__block col-md-12">
