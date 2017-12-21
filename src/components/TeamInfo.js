@@ -33,11 +33,13 @@ export class LeagueList extends React.Component {
                 if (err || !res.ok) {
                     alert('Oh no! error');
                 } else {
-                    this.setState({response: res.body, clubName: res.body.name, crestUrl: res.body.crestUrl, nickName: res.body.shortName})
-                    this
-                        .props
-                        .store
-                        .teamName(res.body.name)
+                    this.setState({
+                        response: res.body, 
+                        clubName: res.body.name, 
+                        crestUrl: res.body.crestUrl, 
+                        nickName: res.body.shortName
+                    })
+                    this.props.store.teamName(res.body.name)
                 }
             });
     }
@@ -46,6 +48,9 @@ export class LeagueList extends React.Component {
         localStorage.setItem("clubName", this.state.clubName);
         localStorage.setItem("logo", this.state.crestUrl);
         localStorage.setItem("teamId", this.props.thisRoute);
+        localStorage.setItem("competitionId", this.props.store.competitionId);
+        localStorage.setItem("teamPosition", this.props.store.teamPosition);
+        localStorage.setItem("leagueName", this.props.store.leagueName);
         this.props.store.favoriteAdd(this.state.clubName, this.state.crestUrl, this.props.thisRoute)
         let d = document.getElementById("favorite")
         d.className += " success";
@@ -62,7 +67,6 @@ export class LeagueList extends React.Component {
         let divStyle = {
             backgroundImage: `url(${imgUrl})`
         };
-
         let clubNameLoSt = localStorage.getItem("clubName");
         let clubNameThisClub = this.state.clubName
         let clubFavButton = []

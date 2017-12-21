@@ -3,7 +3,6 @@
 import {observable, action} from 'mobx';
 
 class Store {
-    @observable todo = ["milk", "eggs"]
     @observable match = null
     @observable name = null
     @observable formCount = 5
@@ -11,6 +10,9 @@ class Store {
     @observable clubName = localStorage.getItem("clubName")
     @observable crestUrl = localStorage.getItem("logo")
     @observable teamId = localStorage.getItem("teamId")
+    @observable competitionId = localStorage.getItem("competitionId")
+    @observable teamPosition = localStorage.getItem("teamPosition")
+    @observable leagueName = localStorage.getItem("leagueName")
      
     @action matchDay = (match) => {
         this.match = match
@@ -46,6 +48,15 @@ class Store {
         this.clubName = clubName
         this.crestUrl = crestUrl
         this.teamId = teamId
+    }
+    @action competitionIdFunc = (competitionId) => {
+        this.competitionId = competitionId
+    }
+    @action teamPositionFunc = (teamPosition) => {
+        this.teamPosition = teamPosition
+    }
+    @action leagueNameFunc = (leagueName) => {
+        this.leagueName = leagueName
     }
 }
 
