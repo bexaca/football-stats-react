@@ -59,13 +59,11 @@ export class LeagueList extends React.Component {
 
     currentMatch(i) {
         let match = this.state.response[i].currentMatchday;
-        console.log(match);
         this.props.store.matchDay(match)
     }
 
 
     render() {
-        console.log(this.props.store.match)
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(

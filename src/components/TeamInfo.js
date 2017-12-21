@@ -15,12 +15,11 @@ import {observer, inject} from 'mobx-react'
 export class LeagueList extends React.Component {
 
     state = {
-            response: null,
-            clubName: null,
-            crestUrl: null,
-            nickName: null
-        }
-
+        response: null,
+        clubName: null,
+        crestUrl: null,
+        nickName: null
+    }
 
     componentDidMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}`;
@@ -34,46 +33,57 @@ export class LeagueList extends React.Component {
                 if (err || !res.ok) {
                     alert('Oh no! error');
                 } else {
-                    this.setState({
-                        response: res.body,
-                        clubName: res.body.name,
-                        crestUrl: res.body.crestUrl,
-                        nickName: res.body.shortName
-                    })
-                    this.props.store.teamName(res.body.name)
+                    this.setState({response: res.body, clubName: res.body.name, crestUrl: res.body.crestUrl, nickName: res.body.shortName})
+                    this
+                        .props
+                        .store
+                        .teamName(res.body.name)
                 }
             });
     }
 
-    
     favoriteTeamAdd() {
-            localStorage.setItem("clubName", this.state.clubName);
-            localStorage.setItem("logo", this.state.crestUrl);
-            localStorage.setItem("teamId", this.props.thisRoute);
-            this.props.store.favoriteAdd(this.state.clubName, this.state.crestUrl, this.props.thisRoute)
+        localStorage.setItem("clubName", this.state.clubName);
+        localStorage.setItem("logo", this.state.crestUrl);
+        localStorage.setItem("teamId", this.props.thisRoute);
+        this.props.store.favoriteAdd(this.state.clubName, this.state.crestUrl, this.props.thisRoute)
+        let d = document.getElementById("favorite")
+        d.className += " success";
+        setTimeout(function(){ 
+            d.className += " hide__button";
+            setTimeout(function(){ 
+                d.className += " no__button";
+            }, 500);
+        }, 1000);
     }
 
     render() {
-        console.log(this.state.response)
         let imgUrl = this.state.crestUrl
         let divStyle = {
-          backgroundImage: `url(${imgUrl})`
+            backgroundImage: `url(${imgUrl})`
         };
+
+        let clubNameLoSt = localStorage.getItem("clubName");
+        let clubNameThisClub = this.state.clubName
+        let clubFavButton = []
+        if (clubNameLoSt !== clubNameThisClub) {
+            clubFavButton.push(
+                <div key={"clubFav"} className="text-center">
+                    <button id="favorite" className="btn btn-green btn-border-o" onClick={() => this.favoriteTeamAdd()}>Add Favorite</button>
+                </div>
+            )
+        }
         const response = this.state.response
         if (response != null) {
             return (
-                    <div>
-                        <span onClick={() => this.favoriteTeamAdd()}>Favorite</span>
-                        <div className="image__block"
-                             style={divStyle}>
-                        </div>
-                        <h2 className="text-center">{this.state.clubName} - {this.state.nickName}</h2>
-                    </div>
+                <div>
+                    {clubFavButton}
+                    <div className="image__block" style={divStyle}></div>
+                    <h2 className="text-center">{this.state.clubName} - {this.state.nickName}</h2>
+                </div>
             );
         }
-        return (
-            <Preloader />
-        );
+        return (<Preloader/>);
     }
 }
 

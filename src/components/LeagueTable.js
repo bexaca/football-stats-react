@@ -47,7 +47,6 @@ export class LeagueTable extends React.Component {
                         teamUrl: teamId,
                         matchDay: res.body.matchday
                     })
-                    console.log(this.props.store.match)
                     let match = res.body.matchday;
                     this.props.store.matchDay(match);
                 }
@@ -55,7 +54,6 @@ export class LeagueTable extends React.Component {
     }
 
     render() {
-        
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             let teamLink = this.state.teamUrl[i];

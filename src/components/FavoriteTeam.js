@@ -27,7 +27,7 @@ export class FavoriteTeam extends React.Component {
             return (
                 <div className="row">
                     <div className="favourite__block col-md-12">
-                        <span onClick={() => this.favoriteTeamRemove()}>remove favorite</span>
+                        <button className="btn btn-red btn-border-o" onClick={() => this.favoriteTeamRemove()}>Remove Favorite</button>
                         <div className="image__block" style={divStyle}></div>
                         <h2>{clubName}</h2>
                         <div className="col-md-12">
