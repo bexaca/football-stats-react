@@ -32,8 +32,6 @@ class Store {
     }
     @action formMoreFunc = () => {
         if(this.formCount === this.formMax){
-            console.log(this.formCount)
-            console.log(this.formMax)
             this.formCount = this.formMax
         }else{
             this.formCount++

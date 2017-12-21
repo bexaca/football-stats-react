@@ -55,7 +55,6 @@ export class LeagueList extends React.Component {
         let defenceElements = []
         let midfieldElements = []
         let forwardElements = []
-        console.log(this.props.thisRoute)
         for(let i=0; i<this.state.count; i++){
             if(this.state.position[i] === "Keeper"){
                 keeperElements.push(
@@ -84,27 +83,35 @@ export class LeagueList extends React.Component {
             } 
         }
         const response = this.state.response
-        if (response != null) {
-            return (
+        if (response !== null) {
+            if(keeperElements.length !== 0 && defenceElements.length !== 0 && midfieldElements.length !== 0 && forwardElements.length !== 0){
+                return (
+                        <div>
+                            <div className="row text-center">
+                                <h4 className="underline__heading">Goalkeeper</h4>
+                                {keeperElements}
+                            </div>
+                            <div className="row text-center">
+                                <h4 className="underline__heading">Defence</h4>
+                                {defenceElements}
+                            </div>
+                            <div className="row text-center">
+                                <h4 className="underline__heading">Midfield</h4>
+                                {midfieldElements}
+                            </div>
+                            <div className="row text-center">
+                                <h4 className="underline__heading">Forward</h4>
+                                {forwardElements}
+                            </div>
+                        </div>
+                );
+            } else{
+                return (
                     <div>
-                        <div className="row text-center">
-                            <h4 className="underline__heading">Goalkeeper</h4>
-                            {keeperElements}
-                        </div>
-                        <div className="row text-center">
-                            <h4 className="underline__heading">Defence</h4>
-                            {defenceElements}
-                        </div>
-                        <div className="row text-center">
-                            <h4 className="underline__heading">Midfield</h4>
-                            {midfieldElements}
-                        </div>
-                        <div className="row text-center">
-                            <h4 className="underline__heading">Forward</h4>
-                            {forwardElements}
-                        </div>
+                        <h4 className="text-center">Sorry, no players for this team</h4>
                     </div>
-            );
+                );
+            }
         }
         return (
             <Preloader />

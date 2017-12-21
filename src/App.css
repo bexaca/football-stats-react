@@ -3407,6 +3407,8 @@ nav ul li a {
 
 .image__block {
   height: 200px;
+  width: 200px;
+  display: inline-block;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat; }
@@ -3509,6 +3511,7 @@ nav ul li a {
   margin: 5px; }
 
 .team__info {
+  text-align: center;
   padding-top: 20px; }
 
 .App {

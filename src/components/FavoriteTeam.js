@@ -30,7 +30,6 @@ export class FavoriteTeam extends React.Component {
         let divStyle = null;
         if (clubName != null) {
             if(localStorageCrest === "null"){
-                console.log('nrao')
                 divStyle = {
                     backgroundImage: `url(${placeholderTeam})`
                 }
@@ -43,8 +42,10 @@ export class FavoriteTeam extends React.Component {
                 <div className="row">
                     <div className="favourite__block col-md-12">
                         <button className="btn btn-red btn-border-o" onClick={() => this.favoriteTeamRemove()}>Remove Favorite</button>
-                        <div className="image__block" style={divStyle}></div>
-                        <h2>{clubName}</h2>
+                        <Link to={`/team/${teamId}`} activeClassName={"active-link"}>
+                            <div className="image__block" style={divStyle}></div>
+                            <h2>{clubName}</h2>
+                        </Link>
                         <div className="col-md-12">
                             <div className="info__block">
                                 <h4>League</h4>

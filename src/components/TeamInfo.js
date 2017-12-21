@@ -7,6 +7,9 @@ import request from 'superagent';
 //COMPONENTS
 import Preloader from './Preloader.js'
 
+//IMAGES
+import placeholderTeam from '../images/placeholder_team.png';
+
 //MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
@@ -64,9 +67,16 @@ export class LeagueList extends React.Component {
 
     render() {
         let imgUrl = this.state.crestUrl
-        let divStyle = {
-            backgroundImage: `url(${imgUrl})`
-        };
+        let divStyle = null
+        if(imgUrl != null){
+            divStyle = {
+                backgroundImage: `url(${imgUrl})`
+            };
+        } else{
+            divStyle = {
+                backgroundImage: `url(${placeholderTeam})`
+            };
+        }
         let clubNameLoSt = localStorage.getItem("clubName");
         let clubNameThisClub = this.state.clubName
         let clubFavButton = []
@@ -83,7 +93,7 @@ export class LeagueList extends React.Component {
                 <div className="team__info">
                     {clubFavButton}
                     <div className="image__block" style={divStyle}></div>
-                    <h2 className="text-center">{this.state.clubName} - {this.state.nickName}</h2>
+                    <h2 className="text-center">{this.state.clubName}</h2>
                 </div>
             );
         }

@@ -66,7 +66,6 @@ export class TeamFixtures extends React.Component {
                         } else {
                             for(let i=0; i<res.body.standing.length; i++){
                                 if(res.body.standing[i]._links.team.href.split('teams/')[1] === this.state.teamId){
-                                    console.log(res.body.standing[i].position)
                                     this.props.store.teamPositionFunc(res.body.standing[i].position)
                                 }
                             }
@@ -82,8 +81,6 @@ export class TeamFixtures extends React.Component {
     }
 
     render() {
-        console.log(this.state.response)
-        console.log(this.state.leagueName)
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []

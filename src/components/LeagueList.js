@@ -25,7 +25,9 @@ export class LeagueList extends React.Component {
         count: null,
         name: [],
         identification: [],
-        ids: null
+        ids: null,
+        randArr: [],
+        navList: null
     }
 
     componentDidMount() {
@@ -46,12 +48,29 @@ export class LeagueList extends React.Component {
                         names.push(res.body[i].caption);
                         identifications.push(res.body[i].id);
                     }
+                    let arr = []
+                    while(arr.length < 3){
+                        var randomnumber = Math.floor((Math.random() * res.body.length));
+                        if(arr.indexOf(randomnumber) > -1) continue;
+                        arr[arr.length] = randomnumber;
+                    }
+                    
+                    let navListName = []
+                    let navListId = []
+                    for(let ar of arr){
+                        navListName.push(res.body[ar].caption.split(' 201')[0])
+                        navListId.push(res.body[ar].id)
+                    }
+
                     this.setState({
                         response: res.body,
                         count: res.body.length,
                         name: names,
-                        identification: identifications
+                        identification: identifications,
+                        randArr: arr,
+                        navList: navListId
                     })
+
                 }
             });
     }
@@ -64,6 +83,7 @@ export class LeagueList extends React.Component {
 
 
     render() {
+        console.log(this.state.navList)
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(

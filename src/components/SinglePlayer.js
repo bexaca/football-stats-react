@@ -47,10 +47,8 @@ export class SinglePlayer extends React.Component {
 
 
     render() {
-        console.log(this.props.thisRoute[1])
         const playerNum = this.props.thisRoute[1]
         const response = this.state.response
-        console.log(this.state.players[playerNum])
         if (response != null) {
             return (
                     <div>
