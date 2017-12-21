@@ -19,7 +19,7 @@ export class SinglePlayer extends React.Component {
             players: []
         }
 
-    componentWillMount() {
+    componentDidMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute[0]}/players`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 

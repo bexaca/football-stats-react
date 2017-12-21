@@ -25,7 +25,7 @@ export class LeagueTable extends React.Component {
         matchDay: null
     }
     
-    componentWillMount() {
+    componentDidMount() {
         const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
         request

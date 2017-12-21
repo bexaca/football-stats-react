@@ -28,7 +28,7 @@ export class LeagueList extends React.Component {
         ids: null
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const url = "http://api.football-data.org/v1/competitions";
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 

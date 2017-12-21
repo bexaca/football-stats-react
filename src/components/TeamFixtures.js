@@ -25,7 +25,7 @@ export class TeamFixtures extends React.Component {
         }
 
 
-    componentWillMount() {
+    componentDidMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
 

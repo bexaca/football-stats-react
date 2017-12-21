@@ -2,9 +2,9 @@
 import React from 'react';
 
 export class Settings extends React.Component {
-     state = {
-          value: null,
-        }
+    state = {
+        value: null
+    }
     render() {
         return (
             <div className="container">
@@ -13,6 +13,5 @@ export class Settings extends React.Component {
         );
     }
 }
-
 
 export default Settings;

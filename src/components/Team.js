@@ -13,8 +13,8 @@ import store from './Store'
 export class Team extends React.Component {
 
     state = {
-            thisRoute: this.props.router.params.id
-        }
+        thisRoute: this.props.router.params.id
+    }
 
     render() {
         return (
@@ -26,7 +26,6 @@ export class Team extends React.Component {
             </div>
         );
     }
-
 
 }
 

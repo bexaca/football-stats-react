@@ -9,7 +9,7 @@ export class Root extends React.Component {
         return (
             <div className="body">
                 <div className="header">
-                    <Header />
+                    <Header/>
                 </div>
                 <main>
                     {this.props.children}
