@@ -66,6 +66,7 @@ export class Fixtures extends React.Component {
           }
 
     render() {
+        console.log(this.props.store.leaguesId)
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []

@@ -1,14 +1,19 @@
+//REACT
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+//CSS
 import './App.css';
+
+//ROUTER
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+
+//COMPONENTS
 import Root from './components/Root';
 import Home from './components/Home';
 import League from './components/League';
 import Team from './components/Team';
 import Player from './components/Player';
-import store from './components/Store';
-
 
 class App extends React.Component {
   render() {

@@ -25,9 +25,7 @@ export class LeagueList extends React.Component {
         count: null,
         name: [],
         identification: [],
-        ids: null,
-        randArr: [],
-        navList: null
+        ids: null
     }
 
     componentDidMount() {
@@ -44,31 +42,49 @@ export class LeagueList extends React.Component {
                 } else {
                     let names = [];
                     let identifications = [];
+                    let leaguesId = []
+                    let leaguesName = []
+                    let plId = null
+                    let flId = null
+                    let blId = null
+                    let saId = null
+                    let prId = null
+                    let plName = null
+                    let flName = null
+                    let blName = null
+                    let saName = null
+                    let prName = null
                     for(let i=0; i<res.body.length; i++){
                         names.push(res.body[i].caption);
                         identifications.push(res.body[i].id);
+                        if(res.body[i].league === "PL"){
+                            plId = res.body[i].id
+                            plName = res.body[i].caption.split(' 201')[0]
+                        } else if(res.body[i].league === "FL1"){
+                            flId = res.body[i].id
+                            flName = res.body[i].caption.split(' 201')[0]
+                        } else if(res.body[i].league === "BL1"){
+                            blId = res.body[i].id
+                            blName = res.body[i].caption.split(' 201')[0]
+                        } else if(res.body[i].league === "SA"){
+                            saId = res.body[i].id
+                            saName = res.body[i].caption.split(' 201')[0]
+                        } else if(res.body[i].league === "PD"){
+                            prId = res.body[i].id
+                            prName = res.body[i].caption.split(' 201')[0]
+                        }
                     }
-                    let arr = []
-                    while(arr.length < 3){
-                        var randomnumber = Math.floor((Math.random() * res.body.length));
-                        if(arr.indexOf(randomnumber) > -1) continue;
-                        arr[arr.length] = randomnumber;
-                    }
-                    
-                    let navListName = []
-                    let navListId = []
-                    for(let ar of arr){
-                        navListName.push(res.body[ar].caption.split(' 201')[0])
-                        navListId.push(res.body[ar].id)
-                    }
-
+                    console.log(plName)
+                    leaguesId.push(plId, flId, blId, saId, prId)
+                    leaguesName.push(plName, flName, blName, saName, prName)
+                    this.props.store.leaguesIdFunc(leaguesId)
+                    this.props.store.leaguesNameFunc(leaguesName)
                     this.setState({
                         response: res.body,
                         count: res.body.length,
                         name: names,
                         identification: identifications,
-                        randArr: arr,
-                        navList: navListId
+                        prId: prId
                     })
 
                 }
@@ -83,7 +99,8 @@ export class LeagueList extends React.Component {
 
 
     render() {
-        console.log(this.state.navList)
+        console.log(this.state.response)
+        console.log(this.props.store.leaguesId)
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(

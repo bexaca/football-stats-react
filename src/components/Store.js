@@ -13,6 +13,8 @@ class Store {
     @observable competitionId = localStorage.getItem("competitionId")
     @observable teamPosition = localStorage.getItem("teamPosition")
     @observable leagueName = localStorage.getItem("leagueName")
+    @observable leaguesId = []
+    @observable leaguesName = []
      
     @action matchDay = (match) => {
         this.match = match
@@ -29,6 +31,12 @@ class Store {
     }
     @action formMaxFunc = (formMax) => {
         this.formMax = formMax
+    }
+    @action leaguesIdFunc = (leaguesId) => {
+        this.leaguesId = leaguesId
+    }
+    @action leaguesNameFunc = (leaguesName) => {
+        this.leaguesName = leaguesName
     }
     @action formMoreFunc = () => {
         if(this.formCount === this.formMax){
