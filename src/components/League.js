@@ -15,7 +15,9 @@ export class Leagues extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({thisRoute: this.props.router.params.id})
+        this.setState({
+            thisRoute: this.props.router.params.id
+        })
         return true;
     }
 

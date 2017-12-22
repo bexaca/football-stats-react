@@ -15,7 +15,13 @@ import {observer, inject} from 'mobx-react'
 export class FavoriteTeam extends React.Component {
     
     favoriteTeamRemove() {
-        localStorage.clear();
+        localStorage.removeItem("clubName");
+        localStorage.removeItem("logo");
+        localStorage.removeItem("competitionId");
+        localStorage.removeItem("clubName");
+        localStorage.removeItem("teamId");
+        localStorage.removeItem("teamPosition");
+        localStorage.removeItem("leagueName");
         this.props.store.favoriteDel();
     }
 

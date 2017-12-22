@@ -53,7 +53,6 @@ export class LeagueTable extends React.Component {
     }
     
     render() {
-        console.log(this.state.route)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             let teamLink = this.state.teamUrl[i];

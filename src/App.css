@@ -3512,7 +3512,8 @@ nav ul li a {
 
 .team__info {
   text-align: center;
-  padding-top: 20px; }
+  padding-top: 20px;
+  position: relative; }
 
 .App {
   text-align: center; }

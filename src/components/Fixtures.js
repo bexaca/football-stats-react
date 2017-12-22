@@ -16,6 +16,7 @@ import {observer, inject} from 'mobx-react'
 @observer
 
 export class Fixtures extends React.Component {
+    
     state = {
         response: null,
         fixtures: [],
@@ -70,7 +71,6 @@ export class Fixtures extends React.Component {
     }
 
     render() {
-        
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []
