@@ -13,8 +13,8 @@ class Store {
     @observable competitionId = localStorage.getItem("competitionId")
     @observable teamPosition = localStorage.getItem("teamPosition")
     @observable leagueName = localStorage.getItem("leagueName")
-    @observable leaguesId = []
-    @observable leaguesName = []
+    @observable leaguesId = [localStorage.getItem("leagueIdPl"), localStorage.getItem("leagueIdFl"), localStorage.getItem("leagueIdBl"), localStorage.getItem("leagueIdSa"), localStorage.getItem("leagueIdPr")]
+    @observable leaguesName = [localStorage.getItem("leagueNamePl"), localStorage.getItem("leagueNameFl"), localStorage.getItem("leagueNameBl"), localStorage.getItem("leagueNameSa"), localStorage.getItem("leagueNamePr")]
      
     @action matchDay = (match) => {
         this.match = match

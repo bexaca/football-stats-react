@@ -15,6 +15,11 @@ import League from './components/League';
 import Team from './components/Team';
 import Player from './components/Player';
 
+//MOBX
+import {observer, inject} from 'mobx-react'
+@inject('Store')
+@observer
+
 class App extends React.Component {
   render() {
     return (

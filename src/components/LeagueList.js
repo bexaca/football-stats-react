@@ -60,21 +60,30 @@ export class LeagueList extends React.Component {
                         if(res.body[i].league === "PL"){
                             plId = res.body[i].id
                             plName = res.body[i].caption.split(' 201')[0]
+                            localStorage.setItem("leagueNamePl", plName)
+                            localStorage.setItem("leagueIdPl", plId)
                         } else if(res.body[i].league === "FL1"){
                             flId = res.body[i].id
                             flName = res.body[i].caption.split(' 201')[0]
+                            localStorage.setItem("leagueNameFl", flName)
+                            localStorage.setItem("leagueIdFl", flId)
                         } else if(res.body[i].league === "BL1"){
                             blId = res.body[i].id
                             blName = res.body[i].caption.split(' 201')[0]
+                            localStorage.setItem("leagueNameBl", blName)
+                            localStorage.setItem("leagueIdBl", blId)
                         } else if(res.body[i].league === "SA"){
                             saId = res.body[i].id
                             saName = res.body[i].caption.split(' 201')[0]
+                            localStorage.setItem("leagueNameSa", saName)
+                            localStorage.setItem("leagueIdSa", saId)
                         } else if(res.body[i].league === "PD"){
                             prId = res.body[i].id
                             prName = res.body[i].caption.split(' 201')[0]
+                            localStorage.setItem("leagueNamePr", prName)
+                            localStorage.setItem("leagueIdPr", prId)
                         }
                     }
-                    console.log(plName)
                     leaguesId.push(plId, flId, blId, saId, prId)
                     leaguesName.push(plName, flName, blName, saName, prName)
                     this.props.store.leaguesIdFunc(leaguesId)
@@ -99,8 +108,6 @@ export class LeagueList extends React.Component {
 
 
     render() {
-        console.log(this.state.response)
-        console.log(this.props.store.leaguesId)
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(

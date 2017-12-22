@@ -13,12 +13,11 @@ class Navigation extends Component {
 
     hideNavigationOverlay() {
         document.getElementById("nav").checked = false;
-
     }
 
     render() {
         let navigationElements = []
-        for (let i = 0; i < this.props.store.leaguesId.length; i++) {
+        for (let i = 0; i < this.props.store.leaguesName.length; i++) {
             navigationElements.push(
                 <li key={`nav-${i}`}>
                     <Link

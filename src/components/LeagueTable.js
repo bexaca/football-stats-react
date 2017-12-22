@@ -22,7 +22,8 @@ export class LeagueTable extends React.Component {
         leagueName: null,
         leagueStanding: [],
         teamUrl: [],
-        matchDay: null
+        matchDay: null,
+        route: this.props.thisRoute
     }
     
     componentDidMount() {
@@ -32,10 +33,8 @@ export class LeagueTable extends React.Component {
             .get(url)
             .set('X-Auth-Token', token)
             .set('accept', 'json')
-            .end((err, res) => {
-                if (err || !res.ok) {
-                    alert('Oh no! error');
-                } else {
+            .then((res) => {
+              
                     let teamId = [];
                     for(let i=0; i<res.body.standing.length; i++){
                         teamId.push(res.body.standing[i]._links.team.href);
@@ -45,15 +44,16 @@ export class LeagueTable extends React.Component {
                         leagueName: res.body.leagueCaption,
                         leagueStanding: res.body.standing,
                         teamUrl: teamId,
-                        matchDay: res.body.matchday
+                        matchDay: res.body.matchday,
+                        route: this.props.thisRoute
                     })
                     let match = res.body.matchday;
                     this.props.store.matchDay(match);
-                }
             });
     }
-
+    
     render() {
+        console.log(this.state.route)
         let tableElements = []
         for(let i = 0; i < this.state.leagueStanding.length; i++) {
             let teamLink = this.state.teamUrl[i];

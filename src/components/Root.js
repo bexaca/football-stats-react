@@ -5,7 +5,7 @@ import React from 'react';
 import Header from './Header';
 
 //MOBX
-import store from './Store'
+import store from './Store';
 
 export class Root extends React.Component {
     render() {

@@ -17,28 +17,32 @@ import {observer, inject} from 'mobx-react'
 
 export class Fixtures extends React.Component {
     state = {
-            response: null,
-            fixtures: [],
-            count: null,
-            date: [],
-            result: [],
-            matchDay: null
-        }
+        response: null,
+        fixtures: [],
+        count: null,
+        date: [],
+        result: [],
+        matchDay: null,
+        route: null
+    }
 
     componentDidMount() {
+        console.log("Did Mount")
         const urlTable = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
         request
-        .get(urlTable)
-        .set('X-Auth-Token', token)
-        .set('accept', 'json')
-        .then((res) => {
-            this.setState({
-                matchDay: res.body.matchday
+            .get(urlTable)
+            .set('X-Auth-Token', token)
+            .set('accept', 'json')
+            .then((res) => {
+                this.setState({
+                    matchDay: res.body.matchday,
+                    route: this.props.thisRoute,
+                    response2: res.body
+                })
             })
-        })
-        .then((res) => {
-            const urlFixture = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.state.matchDay}`;
+            .then((res) => {
+                const urlFixture = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.state.matchDay}`;
                 request
                     .get(urlFixture)
                     .set('X-Auth-Token', token)
@@ -49,34 +53,34 @@ export class Fixtures extends React.Component {
                         } else {
                             let date = [];
                             let result = [];
-                            for(let i=0; i<res.body.count; i++){
+                            for (let i = 0; i < res.body.count; i++) {
                                 date.push(res.body.fixtures[i].date);
                                 result.push(res.body.fixtures[i].result);
                             }
                             this.setState({
-                                response: res.body,
-                                fixtures: res.body.fixtures,
-                                count: res.body.count,
-                                date: date,
+                                response: res.body, 
+                                fixtures: res.body.fixtures, 
+                                count: res.body.count, 
+                                date: date, 
                                 result: result
                             })
                         }
                     });
             })
-          }
+    }
 
     render() {
-        console.log(this.props.store.leaguesId)
+        
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []
-        for (let i=0; i<this.state.count; i++){
+        for (let i = 0; i < this.state.count; i++) {
             dates.add(this.state.date[i].slice(0, 10))
         }
-        for(const date of dates){
+        for (const date of dates) {
             datesArr.push(date)
         }
-        for(let j=0; j<datesArr.length; j++){
+        for (let j = 0; j < datesArr.length; j++) {
             let d = datesArr[j];
             let date = moment(d).format('dddd, MMMM Do YYYY');
             fixtureElements.push(
@@ -84,18 +88,20 @@ export class Fixtures extends React.Component {
                     <h3>{date}</h3>
                 </div>
             )
-            for(let i=0; i<this.state.count; i++) {
-                if(datesArr[j] === this.state.date[i].slice(0, 10))
-                fixtureElements.push(
-                    <div key={`games-${i}`} className="single__match__block col-md-12">
-                        <div className="col-md-5">{this.state.fixtures[i].homeTeamName}</div>
-                        <div className="col-md-2"><span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span></div>
-                        <div className="col-md-5">{this.state.fixtures[i].awayTeamName}</div>
-                    </div>
+            for (let i = 0; i < this.state.count; i++) {
+                if (datesArr[j] === this.state.date[i].slice(0, 10)) 
+                    fixtureElements.push(
+                        <div key={`games-${i}`} className="single__match__block col-md-12">
+                            <div className="col-md-5">{this.state.fixtures[i].homeTeamName}</div>
+                            <div className="col-md-2">
+                                <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
+                            </div>
+                            <div className="col-md-5">{this.state.fixtures[i].awayTeamName}</div>
+                        </div>
 
-                );
+                    );
+                }
             }
-        }
         const response = this.state.response
         if (response != null) {
             return (
@@ -108,9 +114,7 @@ export class Fixtures extends React.Component {
                 </div>
             );
         }
-        return (
-            <Preloader />
-        );
+        return (<Preloader/>);
     }
 }
 
