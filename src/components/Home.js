@@ -4,6 +4,7 @@ import React from 'react';
 //COMPONENTS
 import LeagueList from './LeagueList.js';
 import FavoriteTeam from './FavoriteTeam.js';
+import NextFixtures from './NextFixtures.js';
 
 //MOBX
 import store from './Store'
@@ -19,6 +20,7 @@ export class Home extends React.Component {
             <div className="container">
                 <FavoriteTeam thisRoute={this.state.thisRoute} store={store}/>
                 <LeagueList thisRoute={this.state.thisRoute} store={store}/>
+                <NextFixtures thisRoute={this.state.thisRoute} store={store}/>
             </div>
             
         );

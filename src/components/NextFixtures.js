@@ -1,7 +1,7 @@
 //REACT
 import React from 'react';
 
-//SUPER AGENT
+//SUPERAGENT
 import request from 'superagent';
 
 //MOMENT DATE
@@ -15,7 +15,8 @@ import {observer, inject} from 'mobx-react'
 @inject('Store')
 @observer
 
-export class TeamFixtures extends React.Component {
+export class NextFixtures extends React.Component {
+    
     state = {
         response: null,
         fixtures: [],
@@ -29,55 +30,28 @@ export class TeamFixtures extends React.Component {
     }
 
     componentDidMount() {
-        const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
+        const url = `http://api.football-data.org/v1/fixtures/`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
-
         request
-            .get(url)
-            .set('X-Auth-Token', token)
-            .set('accept', 'json')
-            .then((res) => {
-                let date = [];
-                let result = [];
-                for (let i = 0; i < res.body.count; i++) {
-                    date.push(res.body.fixtures[i].date);
-                    result.push(res.body.fixtures[i].result);
-                }
-                this.setState({
-                    response: res.body,
-                    fixtures: res.body.fixtures,
-                    count: res.body.count,
-                    date: date,
-                    result: result,
-                    competitionId: res.body.fixtures[0]._links.competition.href.split('competitions/')[1],
-                    teamId : res.body._links.team.href.split('teams/')[1]
-                })
-                this.props.store.competitionIdFunc(this.state.competitionId)
+        .get(url)
+        .set('X-Auth-Token', token)
+        .set('accept', 'json')
+        .then((res) => {
+            let date = [];
+            let result = [];
+            for (let i = 0; i < res.body.count; i++) {
+                date.push(res.body.fixtures[i].date);
+                result.push(res.body.fixtures[i].result);
+            }
+            this.setState({
+                response: res.body,
+                fixtures: res.body.fixtures,
+                count: res.body.count,
+                date: date,
+                result: result,
             })
-            .then((res) => {
-                const leagueTableUrl = `http://api.football-data.org/v1/competitions/${this.state.competitionId}/leagueTable`;
-                request
-                    .get(leagueTableUrl)
-                    .set('X-Auth-Token', token)
-                    .set('accept', 'json')
-                    .end((err, res) => {
-                        if (err || !res.ok) {
-                            alert('Oh no! error');
-                        } else {
-                            for(let i=0; i<res.body.standing.length; i++){
-                                if(res.body.standing[i]._links.team.href.split('teams/')[1] === this.state.teamId){
-                                    this.props.store.teamPositionFunc(res.body.standing[i].position)
-                                }
-                            }
-
-                            this.setState({
-                                responseTable: res.body,
-                                leagueName: res.body.leagueCaption
-                            })
-                            this.props.store.leagueNameFunc(this.state.leagueName)
-                        }
-                    });
-            })
+            this.props.store.competitionIdFunc(this.state.competitionId)
+        })
     }
 
     render() {
@@ -99,7 +73,7 @@ export class TeamFixtures extends React.Component {
                     <span>{date}</span>
                 </div>
             )
-            for (let i = 0; i < this.state.count; i++) {
+            for (let i = 0; i < 10; i++) {
                 if (datesArr[j] === this.state.date[i].slice(0, 10)) 
                     fixtureElements.push(
                         <div key={`games-${i}`} className="single__match__block row">
@@ -128,6 +102,7 @@ export class TeamFixtures extends React.Component {
         }
         return (<Preloader/>);
     }
+        
 }
 
-export default TeamFixtures;
+export default NextFixtures;

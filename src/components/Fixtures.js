@@ -28,7 +28,6 @@ export class Fixtures extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Did Mount")
         const urlTable = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
         request
