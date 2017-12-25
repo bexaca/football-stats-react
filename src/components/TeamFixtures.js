@@ -50,7 +50,7 @@ export class TeamFixtures extends React.Component {
                     date: date,
                     result: result,
                     competitionId: res.body.fixtures[0]._links.competition.href.split('competitions/')[1],
-                    teamId : res.body._links.team.href.split('teams/')[1]
+                    teamId: res.body._links.team.href.split('teams/')[1]
                 })
                 this.props.store.competitionIdFunc(this.state.competitionId)
             })
@@ -64,14 +64,13 @@ export class TeamFixtures extends React.Component {
                         if (err || !res.ok) {
                             alert('Oh no! error');
                         } else {
-                            for(let i=0; i<res.body.standing.length; i++){
-                                if(res.body.standing[i]._links.team.href.split('teams/')[1] === this.state.teamId){
+                            for (let i = 0; i < res.body.standing.length; i++) {
+                                if (res.body.standing[i]._links.team.href.split('teams/')[1] === this.state.teamId) {
                                     this.props.store.teamPositionFunc(res.body.standing[i].position)
                                 }
                             }
-
                             this.setState({
-                                responseTable: res.body,
+                                responseTable: res.body, 
                                 leagueName: res.body.leagueCaption
                             })
                             this.props.store.leagueNameFunc(this.state.leagueName)
@@ -81,7 +80,8 @@ export class TeamFixtures extends React.Component {
     }
 
     render() {
-        let fixtureElements = []
+        let nextFixtureElements = []
+        let pastFixtureElements = []
         let dates = new Set()
         let datesArr = []
         for (let i = 0; i < this.state.count; i++) {
@@ -93,24 +93,56 @@ export class TeamFixtures extends React.Component {
         for (let j = 0; j < datesArr.length; j++) {
             let d = datesArr[j];
             let date = moment(d).format('dddd, MMMM Do YYYY');
-            fixtureElements.push(
-                <div key={`days-${j}`} className="col-md-12">
-                    <span>{date}</span>
-                </div>
-            )
             for (let i = 0; i < this.state.count; i++) {
-                if (datesArr[j] === this.state.date[i].slice(0, 10)) 
-                    fixtureElements.push(
-                        <div key={`games-${i}`} className="single__match__block row">
-                            <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
-                            <div className="col-xs-2">
-                                <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
+                if (datesArr[j] === this.state.date[i].slice(0, 10)) {
+                    if (this.state.fixtures[i].status === "FINISHED") {
+                        pastFixtureElements.push(
+                            <div key={`past-games-${i}`}>
+                                <div className="col-md-12">
+                                    <span>{date}</span>
+                                </div>
+                                <div className="single__match__block row">
+                                    <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
+                                    <div className="col-xs-2">
+                                        <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
+                                    </div>
+                                    <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
+                                </div>
                             </div>
-                            <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
-                        </div>
-                    );
+                        );
+                    } else if (this.state.fixtures[i].status === "SCHEDULED" || this.state.fixtures[i].status === "TIMED") {
+                        nextFixtureElements.push(
+                            <div key={`next-games-${i}`}>
+                                <div className="col-md-12">
+                                    <span>{date}</span>
+                                </div>
+                                <div className="single__match__block row">
+                                    <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
+                                    <div className="col-xs-2">
+                                        <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
+                                    </div>
+                                    <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
+                                </div>
+                            </div>
+                        );
+                    }
                 }
             }
+        }
+
+        let pastThreeGames = []
+        pastThreeGames.push(
+            pastFixtureElements[pastFixtureElements.length-3],
+            pastFixtureElements[pastFixtureElements.length-2],
+            pastFixtureElements[pastFixtureElements.length-1]
+        )
+
+        let nextTwoGames = []
+        nextTwoGames.push(
+            nextFixtureElements[0],
+            nextFixtureElements[1]
+        )
+
         const response = this.state.response
         if (response != null) {
             return (
@@ -118,7 +150,8 @@ export class TeamFixtures extends React.Component {
                     <div className="col-md-12">
                         <h3>Fixtures</h3>
                         <div className="fixtures__block">
-                            {fixtureElements}
+                            {pastThreeGames}
+                            {nextTwoGames}
                         </div>
                     </div>
                 </div>

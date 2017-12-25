@@ -32,18 +32,21 @@ class Store {
     @action formMaxFunc = (formMax) => {
         this.formMax = formMax
     }
-    @action leaguesIdFunc = (leaguesId) => {
-        this.leaguesId = leaguesId
-    }
-    @action leaguesNameFunc = (leaguesName) => {
-        this.leaguesName = leaguesName
-    }
     @action formMoreFunc = () => {
         if(this.formCount === this.formMax){
             this.formCount = this.formMax
         }else{
             this.formCount++
         }
+    }
+    @action formResetFunc = () => {
+        this.formCount = 5
+    }
+    @action leaguesIdFunc = (leaguesId) => {
+        this.leaguesId = leaguesId
+    }
+    @action leaguesNameFunc = (leaguesName) => {
+        this.leaguesName = leaguesName
     }
     @action favoriteDel = () => {
         this.clubName = null

@@ -48,7 +48,6 @@ export class NextFixtures extends React.Component {
             let thisDateFormat = moment(thisDate).format('dddd, MMMM Do YYYY')
             let nextFixtureElements = []
             for(let i = 0; i < 10; i++){
-                console.log(res.body.fixtures[i].status)
                 let gameDateFormat = moment(res.body.fixtures[i].date).format('dddd, MMMM Do YYYY')
                 if(thisDateFormat === gameDateFormat && res.body.fixtures[i].status === "TIMED"){
                     nextFixtureElements.push(
@@ -76,7 +75,6 @@ export class NextFixtures extends React.Component {
     }
 
     render() {
-        console.log(this.state.response)
         const response = this.state.response
         if (response != null) {
             if(this.state.nextFixtureElements.length === 0){

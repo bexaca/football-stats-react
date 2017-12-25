@@ -93,7 +93,7 @@ export class LeagueList extends React.Component {
                 <div className="favourite__block team__info">
                     {clubFavButton}
                     <div className="image__block" style={divStyle}></div>
-                    <h2 className="text-center">{this.state.clubName}</h2>
+                    <h2 className="text-center" id="club__name">{this.state.clubName}</h2>
                 </div>
             );
         }

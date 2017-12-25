@@ -100,20 +100,13 @@ export class LeagueList extends React.Component {
             });
     }
 
-
-    currentMatch(i) {
-        let match = this.state.response[i].currentMatchday;
-        this.props.store.matchDay(match)
-    }
-
-
     render() {
         let leaguesElements = []
         for(let i = 0; i < this.state.count; i++) {
             leaguesElements.push(
                 <div key={`league-${i}`} className="col-md-3">
                     <div className="league__block__single">
-                        <Link onClick={() => this.currentMatch(i)} to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
+                        <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
                             <img src={placeholder} alt="placeholder" />
                             <h6 className="text-center">{this.state.name[i]}</h6>
                         </Link>

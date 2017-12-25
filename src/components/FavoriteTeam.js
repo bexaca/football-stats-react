@@ -29,7 +29,7 @@ export class FavoriteTeam extends React.Component {
         const crestUrl = this.props.store.crestUrl
         const clubName = this.props.store.clubName
         const teamId = this.props.store.teamId
-        const competitionId = this.props.store.competitionId
+        const competitionId = localStorage.getItem("competitionId")
         const teamPosition = this.props.store.teamPosition
         const leagueName = this.props.store.leagueName
         const localStorageCrest = localStorage.getItem("logo")

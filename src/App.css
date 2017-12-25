@@ -3515,6 +3515,9 @@ nav ul li a {
   padding-top: 20px;
   position: relative; }
 
+.table #container tr.selected__team {
+  background-color: rgba(0, 191, 242, 0.41); }
+
 .App {
   text-align: center; }
 
