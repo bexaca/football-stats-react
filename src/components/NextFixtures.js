@@ -26,7 +26,8 @@ export class NextFixtures extends React.Component {
         competitionId: null,
         responseTable: null,
         teamId: null,
-        leagueName: null
+        leagueName: null,
+        nextFixtureElements: []
     }
 
     componentDidMount() {
@@ -43,12 +44,32 @@ export class NextFixtures extends React.Component {
                 date.push(res.body.fixtures[i].date);
                 result.push(res.body.fixtures[i].result);
             }
+            let thisDate = new Date();
+            let thisDateFormat = moment(thisDate).format('dddd, MMMM Do YYYY')
+            let nextFixtureElements = []
+            for(let i = 0; i < 10; i++){
+                console.log(res.body.fixtures[i].status)
+                let gameDateFormat = moment(res.body.fixtures[i].date).format('dddd, MMMM Do YYYY')
+                if(thisDateFormat === gameDateFormat && res.body.fixtures[i].status === "TIMED"){
+                    nextFixtureElements.push(
+                        <div key={`nextGames-${i}`} className="single__match__block col-md-12">
+                            <div className="col-md-5">{res.body.fixtures[i].homeTeamName}</div>
+                            <div className="col-md-2">
+                                <span>{res.body.fixtures[i].result.goalsHomeTeam} - {res.body.fixtures[i].result.goalsAwayTeam}</span>
+                            </div>
+                            <div className="col-md-5">{res.body.fixtures[i].awayTeamName}</div>
+                        </div>
+                    );
+                }
+            }
+
             this.setState({
                 response: res.body,
                 fixtures: res.body.fixtures,
                 count: res.body.count,
                 date: date,
                 result: result,
+                nextFixtureElements: nextFixtureElements
             })
             this.props.store.competitionIdFunc(this.state.competitionId)
         })
@@ -56,45 +77,24 @@ export class NextFixtures extends React.Component {
 
     render() {
         console.log(this.state.response)
-        let fixtureElements = []
-        let dates = new Set()
-        let datesArr = []
-        for (let i = 0; i < this.state.count; i++) {
-            dates.add(this.state.date[i].slice(0, 10))
-        }
-        for (const date of dates) {
-            datesArr.push(date)
-        }
-        for (let j = 0; j < datesArr.length; j++) {
-            let d = datesArr[j];
-            let date = moment(d).format('dddd, MMMM Do YYYY');
-            fixtureElements.push(
-                <div key={`days-${j}`} className="col-md-12">
-                    <span>{date}</span>
-                </div>
-            )
-            for (let i = 0; i < 10; i++) {
-                if (datesArr[j] === this.state.date[i].slice(0, 10)) 
-                    fixtureElements.push(
-                        <div key={`games-${i}`} className="single__match__block row">
-                            <div className="col-xs-5">{this.state.fixtures[i].homeTeamName}</div>
-                            <div className="col-xs-2">
-                                <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
-                            </div>
-                            <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
-                        </div>
-
-                    );
-                }
-            }
         const response = this.state.response
         if (response != null) {
+            if(this.state.nextFixtureElements.length === 0){
+                return (
+                    <div className="row text-center">
+                        <div className="col-md-12">
+                            <h3>There are no fixtures today</h3>
+                            
+                        </div>
+                    </div>
+                );
+            }
             return (
-                <div className="row">
+                <div className="row text-center">
                     <div className="col-md-12">
-                        <h3>Fixtures</h3>
+                        <h3>Today Fixtures</h3>
                         <div className="fixtures__block">
-                            {fixtureElements}
+                            {this.state.nextFixtureElements}
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,6 @@ export class NextFixtures extends React.Component {
         }
         return (<Preloader/>);
     }
-        
 }
 
 export default NextFixtures;

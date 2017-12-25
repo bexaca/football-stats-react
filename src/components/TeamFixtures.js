@@ -81,7 +81,6 @@ export class TeamFixtures extends React.Component {
     }
 
     render() {
-        console.log(this.state.response)
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []
@@ -109,7 +108,6 @@ export class TeamFixtures extends React.Component {
                             </div>
                             <div className="col-xs-5">{this.state.fixtures[i].awayTeamName}</div>
                         </div>
-
                     );
                 }
             }

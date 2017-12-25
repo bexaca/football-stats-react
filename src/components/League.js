@@ -22,7 +22,6 @@ export class Leagues extends React.Component {
     }
 
     render() {
-        console.log(this.props.router.location.key)
         return (
             <div key={this.props.router.location.key} className="container">
                 <LeagueTable thisRoute={this.state.thisRoute} store={store}/>
