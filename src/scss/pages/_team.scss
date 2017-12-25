@@ -36,5 +36,8 @@
     position: relative;
 }
 .table #container tr.selected__team{
-    background-color: rgba(0, 191, 242, 0.41)
+    background-color: rgba(0, 191, 242, 0.41);
+    a{
+        pointer-events: none;
+    }
 }

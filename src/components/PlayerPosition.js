@@ -58,7 +58,7 @@ export class LeagueList extends React.Component {
         for(let i=0; i<this.state.count; i++){
             if(this.state.position[i] === "Keeper"){
                 keeperElements.push(
-                        <div key={`gk-${i}`} className="col-md-3 col-sm-3">
+                    <div key={`gk-${i}`} className="col-md-3 col-sm-3">
                             <h4><Link to={`/team/${this.props.thisRoute}/player/${i}`}  activeClassName={"active-link"}>{this.state.response.players[i].name}</Link></h4>
                         </div>
                 )

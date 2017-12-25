@@ -3517,6 +3517,8 @@ nav ul li a {
 
 .table #container tr.selected__team {
   background-color: rgba(0, 191, 242, 0.41); }
+  .table #container tr.selected__team a {
+    pointer-events: none; }
 
 .App {
   text-align: center; }
