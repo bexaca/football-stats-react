@@ -75,6 +75,7 @@ export class NextFixtures extends React.Component {
     }
 
     render() {
+        console.log(this.state.response)
         const response = this.state.response
         if (response != null) {
             if(this.state.nextFixtureElements.length === 0){

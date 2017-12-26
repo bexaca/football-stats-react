@@ -7,8 +7,8 @@ import request from 'superagent';
 //COMPONENTS
 import Preloader from './Preloader.js'
 
-//REACT ROUTER
-import {Link} from 'react-router';
+//MOMENT DATE
+import moment from 'moment';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
@@ -63,7 +63,7 @@ export class SinglePlayer extends React.Component {
                                 </a>
                             </p>
                             <h4>Date of birth</h4>
-                            <p>{this.state.players[playerNum].dateOfBirth}</p>
+                            <p>{moment(this.state.players[playerNum].dateOfBirth).format('MMMM Do YYYY')}</p>
                             <h4>Nationality</h4>
                             <p>{this.state.players[playerNum].nationality}</p>
                             <h4>Position</h4>
@@ -71,7 +71,7 @@ export class SinglePlayer extends React.Component {
                             <h4>Number</h4>
                             <p>{this.state.players[playerNum].jerseyNumber}</p>
                             <h4>Contract until</h4>
-                            <p>{this.state.players[playerNum].contractUntil}</p>
+                            <p>{moment(this.state.players[playerNum].contractUntil).format('MMMM Do YYYY')}</p>
                         </div>
                     </div>
             );

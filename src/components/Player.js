@@ -17,7 +17,7 @@ export class Team extends React.Component {
     render() {
         return (
             <div className="container">
-                {/* <PlayerPicture thisRoute={this.state.thisRoute} store={store}/> */}
+                <PlayerPicture thisRoute={this.state.thisRoute} store={store}/>
                 <SinglePlayer thisRoute={this.state.thisRoute} store={store}/>
             </div>
         );
