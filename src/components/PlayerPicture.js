@@ -89,7 +89,7 @@ export class PlayerPicture extends React.Component {
                             </a>
                         </p>
                         <h4>Bio</h4>
-                        <p>{this.state.playerDesc}</p>
+                        <p>{this.state.playerDescg}</p>
                         <h4>Date of birth</h4>
                         <p>{moment(this.state.playerBirth).format('MMMM Do YYYY')}</p>
                         <h4>Nationality</h4>
