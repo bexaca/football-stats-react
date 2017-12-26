@@ -3,6 +3,10 @@
     text-align: center;
     border-bottom: 1px solid $main-color;
     padding: 10px;
+
+    .single__game{
+      cursor: pointer;
+    }
   }
   h3{
     margin: 25px 0;

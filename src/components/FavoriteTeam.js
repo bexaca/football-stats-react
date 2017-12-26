@@ -30,8 +30,8 @@ export class FavoriteTeam extends React.Component {
         const clubName = this.props.store.clubName
         const teamId = this.props.store.teamId
         const competitionId = localStorage.getItem("competitionId")
-        const teamPosition = this.props.store.teamPosition
-        const leagueName = this.props.store.leagueName
+        const teamPosition = localStorage.getItem("teamPosition")
+        const leagueName = localStorage.getItem("leagueName")
         const localStorageCrest = localStorage.getItem("logo")
         let divStyle = null;
         if (clubName != null) {

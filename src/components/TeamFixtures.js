@@ -49,9 +49,15 @@ export class TeamFixtures extends React.Component {
                     count: res.body.count,
                     date: date,
                     result: result,
-                    competitionId: res.body.fixtures[0]._links.competition.href.split('competitions/')[1],
                     teamId: res.body._links.team.href.split('teams/')[1]
                 })
+                for(let i = 0; i<res.body.count; i++){
+                    if(res.body.fixtures[i].matchday === 30){
+                        this.setState({
+                            competitionId: res.body.fixtures[i]._links.competition.href.split('competitions/')[1]
+                        })
+                    }
+                }
                 this.props.store.competitionIdFunc(this.state.competitionId)
             })
             .then((res) => {

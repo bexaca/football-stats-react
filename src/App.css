@@ -3459,6 +3459,8 @@ nav ul li a {
   text-align: center;
   border-bottom: 1px solid #00BFF2;
   padding: 10px; }
+  .fixtures__block .single__match__block .single__game {
+    cursor: pointer; }
 
 .fixtures__block h3 {
   margin: 25px 0; }

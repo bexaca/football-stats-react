@@ -40,9 +40,15 @@ export class LeagueTable extends React.Component {
                 .set('accept', 'json')
                 .then((res) => {
                     this.setState({
-                        responseF: res.body,
-                        leagueId: res.body.fixtures[0]._links.competition.href.split('/competitions/')[1]
+                        responseF: res.body
                     })
+                    for(let i = 0; i<res.body.count; i++){
+                        if(res.body.fixtures[i].matchday === 30){
+                            this.setState({
+                                leagueId: res.body.fixtures[i]._links.competition.href.split('competitions/')[1]
+                            })
+                        }
+                    }
                 })
                 .then((res) =>{
                     const club = document.getElementById("club__name").innerHTML
