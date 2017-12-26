@@ -77,14 +77,12 @@ export class Fixtures extends React.Component {
     }
 
     render() {
-        console.log(this.state.response)
         let fixtureElements = []
         let dates = new Set()
         let datesArr = []
         let oddsArrHome = []
         let oddsArrDraw = []
         let oddsArrAway = []
-        console.log(this.state.odds)
         for (let i = 0; i < this.state.count; i++) {
             if(this.state.odds[i] != null){
                 oddsArrHome.push(this.state.odds[i].homeWin)
@@ -105,9 +103,6 @@ export class Fixtures extends React.Component {
                 </div>
             )
             for (let i = 0; i < this.state.count; i++) {
-                if(this.state.odds[i] == null){
-                    console.log('prazno')
-                }
                 if (datesArr[j] === this.state.date[i].slice(0, 10)){
                     fixtureElements.push(
                         <div key={`games-${i}`} className="single__match__block col-md-12">

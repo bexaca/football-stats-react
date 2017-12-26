@@ -18,7 +18,7 @@ export class PlayerPicture extends React.Component {
         }
 
     componentDidMount() {
-        const url = `http://c3420952.r52.cf0.rackcdn.com/playerbasicdata.xml`;
+        const url = `https://en.wikipedia.org/wiki/Thorgan_Hazard`;
 
         request
             .get(url)

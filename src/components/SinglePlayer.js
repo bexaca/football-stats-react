@@ -7,6 +7,9 @@ import request from 'superagent';
 //COMPONENTS
 import Preloader from './Preloader.js'
 
+//REACT ROUTER
+import {Link} from 'react-router';
+
 //MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
@@ -54,7 +57,11 @@ export class SinglePlayer extends React.Component {
                     <div>
                         <div className="col-md-12 text-center">
                             <h4>Player name</h4>
-                            <p>{this.state.players[playerNum].name}</p>
+                            <p>
+                                <a target="_blank" href={`https://en.wikipedia.org/wiki/${this.state.players[playerNum].name.replace(" ", "_")}`}>
+                                    {this.state.players[playerNum].name}
+                                </a>
+                            </p>
                             <h4>Date of birth</h4>
                             <p>{this.state.players[playerNum].dateOfBirth}</p>
                             <h4>Nationality</h4>
