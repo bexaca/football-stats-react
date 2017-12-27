@@ -36,3 +36,50 @@
     }
   }
 }
+
+
+.arrow {
+  right: 0;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  margin: -20px 0 0 -20px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px $main-color solid;
+  border-bottom: 2px $main-color solid;
+  @include transition-mix
+  &.reverse{
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+  }
+  &:before {
+    cursor: pointer;
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 5px;
+    top: 50%;
+    margin: -5px 0 0 -5px;
+    border-left: none;
+    border-top: none;
+    border-right: 1px $main-color solid;
+    border-bottom: 1px $main-color solid;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: arrow;
+  }
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-10px, -10px);
+  }
+}

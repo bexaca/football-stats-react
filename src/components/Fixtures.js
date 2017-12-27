@@ -109,11 +109,16 @@ export class Fixtures extends React.Component {
                             <Accordion>
                                 <Panel header={
                                     <div className="row">
-                                        <div className="col-md-5">{this.state.fixtures[i].homeTeamName}</div>
-                                        <div className="col-md-2">
-                                            <span>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</span>
+                                        <div className="col-md-5">
+                                            <h5>{this.state.fixtures[i].homeTeamName}</h5>
                                         </div>
-                                        <div className="col-md-5">{this.state.fixtures[i].awayTeamName}</div>
+                                        <div className="col-md-2">
+                                            <h5>{this.state.result[i].goalsHomeTeam} - {this.state.result[i].goalsAwayTeam}</h5>
+                                        </div>
+                                        <div className="col-md-5">
+                                            <h5>{this.state.fixtures[i].awayTeamName}</h5>
+                                        </div>
+                                        <div className="arrow" id="arrow"></div>
                                     </div>
                                 } eventKey="1" className="single__game">
                                     <div className="row">
