@@ -20,6 +20,11 @@ $btn-colors: ( "green": "#2ecc71", "blue": "#3498db", "purple": "#9b59b6", "navy
     opacity: .999;
     border-radius: 3px;
     @extend .animate;
+
+    @include respond-to(xs){
+        margin: 0;
+        @include horizontal-center;
+    }
 }
 
 .btn-border-o {
