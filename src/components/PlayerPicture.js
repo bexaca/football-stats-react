@@ -44,6 +44,7 @@ export class PlayerPicture extends React.Component {
                     this.setState({
                         playerName: res.body.players[playerId].name.replace(' ', '%20')
                     })
+                    console.log(this.state.playerName)
                 })
                 .then((res) =>{
                     const url = `http://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=${this.state.playerName}`;
