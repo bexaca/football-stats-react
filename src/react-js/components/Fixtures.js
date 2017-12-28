@@ -15,10 +15,8 @@ import {Panel, Accordion} from 'react-bootstrap'
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class Fixtures extends React.Component {
+@inject('Store') @observer export class Fixtures extends React.Component {
     
     state = {
         response: null,

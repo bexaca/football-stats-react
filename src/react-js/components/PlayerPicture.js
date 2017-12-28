@@ -15,10 +15,9 @@ import placeholderPlayer from '../../img/placeholder_player.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class PlayerPicture extends React.Component {
+@inject('Store') @observer export class PlayerPicture extends React.Component {
+    
     state = {
             response: null,
             playerName: null,

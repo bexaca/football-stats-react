@@ -12,10 +12,8 @@ import placeholderTeam from '../../img/placeholder_team.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class LeagueList extends React.Component {
+@inject('Store') @observer export class LeagueList extends React.Component {
 
     state = {
         response: null,

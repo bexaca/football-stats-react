@@ -17,8 +17,9 @@ import Player from './react-js/pages/Player';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer class App extends React.Component {
+
+@inject('Store') @observer class App extends React.Component {
+
   render() {
     return (
         <Router history={browserHistory}>
@@ -33,6 +34,7 @@ import {observer, inject} from 'mobx-react'
         </Router>
     );
   }
+  
 }
 
 export default App;

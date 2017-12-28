@@ -12,10 +12,9 @@ import Preloader from './Preloader.js'
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class TeamFixtures extends React.Component {
+@inject('Store') @observer export class TeamFixtures extends React.Component {
+    
     state = {
         response: null,
         fixtures: [],

@@ -12,10 +12,9 @@ import moment from 'moment';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class SinglePlayer extends React.Component {
+@inject('Store') @observer export class SinglePlayer extends React.Component {
+    
     state = {
             response: null,
             playerId: null,

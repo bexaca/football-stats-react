@@ -9,10 +9,8 @@ import placeholderTeam from '../../img/placeholder_team.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-export class FavoriteTeam extends React.Component {
+@inject('Store') @observer export class FavoriteTeam extends React.Component {
     
     favoriteTeamRemove() {
         localStorage.removeItem("clubName");
