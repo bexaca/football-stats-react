@@ -4,6 +4,9 @@ import React from 'react';
 //REACT ROUTER
 import {Link} from 'react-router';
 
+//SERVICES
+import {favoriteTeamRemove} from '../base/Services'
+
 //IMAGES
 import placeholderTeam from '../../img/placeholder_team.png';
 
@@ -12,17 +15,6 @@ import {observer, inject} from 'mobx-react'
 
 @inject('Store') @observer export class FavoriteTeam extends React.Component {
     
-    favoriteTeamRemove() {
-        localStorage.removeItem("clubName");
-        localStorage.removeItem("logo");
-        localStorage.removeItem("competitionId");
-        localStorage.removeItem("clubName");
-        localStorage.removeItem("teamId");
-        localStorage.removeItem("teamPosition");
-        localStorage.removeItem("leagueName");
-        this.props.store.favoriteDel();
-    }
-
     render() {
         const crestUrl = this.props.store.crestUrl
         const clubName = this.props.store.clubName
@@ -45,7 +37,7 @@ import {observer, inject} from 'mobx-react'
             return (
                 <div className="row">
                     <div className="favourite__block col-md-12">
-                        <button className="btn btn-red btn-border-o" onClick={() => this.favoriteTeamRemove()}>Remove Favorite</button>
+                        <button className="btn btn-red btn-border-o" onClick={() => favoriteTeamRemove()}>Remove Favorite</button>
                         <Link to={`/team/${teamId}`} activeClassName={"active-link"}>
                             <div className="image__block" style={divStyle}></div>
                             <h2>{clubName}</h2>

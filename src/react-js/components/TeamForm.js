@@ -56,7 +56,6 @@ import {observer, inject} from 'mobx-react'
         this.props.store.formMoreFunc()
     }
     
-
     render() {
         let formElements = []
         let formCount = this.props.store.formCount

@@ -12,6 +12,7 @@ import store from '../base/Store'
 export class Home extends React.Component {
 
     render() {
+        
         return (
             <div className="container">
                 <FavoriteTeam thisRoute={this.props.router.params.id} store={store}/>
@@ -20,7 +21,7 @@ export class Home extends React.Component {
             </div>
         );
     }
-    
+
 }
 
 export default Home;

@@ -14,6 +14,9 @@ class Store {
     @observable leagueName = localStorage.getItem("leagueName")
     @observable leaguesId = [localStorage.getItem("leagueIdPl"), localStorage.getItem("leagueIdFl"), localStorage.getItem("leagueIdBl"), localStorage.getItem("leagueIdSa"), localStorage.getItem("leagueIdPr")]
     @observable leaguesName = [localStorage.getItem("leagueNamePl"), localStorage.getItem("leagueNameFl"), localStorage.getItem("leagueNameBl"), localStorage.getItem("leagueNameSa"), localStorage.getItem("leagueNamePr")]
+    @observable requestResponse = null
+    @observable requestDiv = null
+    @observable requestButton = null
      
     @action matchDay = (match) => {
         this.match = match
@@ -65,6 +68,15 @@ class Store {
     }
     @action leagueNameFunc = (leagueName) => {
         this.leagueName = leagueName
+    }
+    @action requestResponseFunc = (requestResponse) => {
+        this.requestResponse = requestResponse
+    }
+    @action requestDivFunc = (requestDiv) => {
+        this.requestDiv = requestDiv
+    }
+    @action requestButtonFunc = (requestButton) => {
+        this.requestButton = requestButton
     }
 }
 

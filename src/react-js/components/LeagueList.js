@@ -99,33 +99,32 @@ import {observer, inject} from 'mobx-react'
     }
 
     render() {
-        let leaguesElements = []
-        for(let i = 0; i < this.state.count; i++) {
-            leaguesElements.push(
-                <div key={`league-${i}`} className="col-md-3">
-                    <div className="league__block__single">
-                        <Link to={`/leagues/${this.state.identification[i]}`} activeClassName={"active-link"}>
-                            <img src={placeholder} alt="placeholder" />
-                            <h6 className="text-center">{this.state.name[i]}</h6>
-                        </Link>
-                    </div>
-                </div>
-            );
-        }
-        const response = this.state.response
-        if (response != null) {
+
+        if (this.state.response != null) {
             return (
                     <div className="row league__block">
                         <div className="col-md-12">
                             <h2>Choose a league</h2>
                         </div>
-                        {leaguesElements}
+                        {
+                            this.state.response.map((item, index) => (
+                                <div key={`league-${index}`} className="col-md-3">
+                                    <div className="league__block__single">
+                                        <Link to={`/leagues/${this.state.identification[index]}`} activeClassName={"active-link"}>
+                                            <img src={placeholder} alt="placeholder" />
+                                            <h6 className="text-center">{this.state.name[index]}</h6>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
             );
         }
         return (
             <Preloader />
         );
+        
     }
 }
 

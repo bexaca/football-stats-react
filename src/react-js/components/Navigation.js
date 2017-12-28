@@ -14,18 +14,7 @@ import {observer, inject} from 'mobx-react'
     }
 
     render() {
-        let navigationElements = []
-        for (let i = 0; i < this.props.store.leaguesName.length; i++) {
-            navigationElements.push(
-                <li key={`nav-${i}`}>
-                    <Link
-                        onClick={() => this.hideNavigationOverlay()}
-                        to={`/leagues/${this.props.store.leaguesId[i]}`}
-                        className="nav__link"
-                        activeClassName={"active-link"}>{this.props.store.leaguesName[i]}</Link>
-                </li>
-            )
-        }
+
         return (
             <nav>
                 <input type="checkbox" id="nav" className="hidden"/>
@@ -36,11 +25,23 @@ import {observer, inject} from 'mobx-react'
                 </label>
                 <div className="nav-container">
                     <ul>
-                        {navigationElements}
+                        {
+                            this.props.store.leaguesName.map((item, index) => (
+                                <li key={`nav-${index}`}>
+                                    <Link
+                                        onClick={() => this.hideNavigationOverlay()}
+                                        to={`/leagues/${this.props.store.leaguesId[index]}`}
+                                        className="nav__link"
+                                        activeClassName={"active-link"}>{this.props.store.leaguesName[index]}
+                                    </Link>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </nav>
         );
+        
     }
 }
 
