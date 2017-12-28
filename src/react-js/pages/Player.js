@@ -10,19 +10,14 @@ import store from '../base/Store'
 
 export class Team extends React.Component {
 
-    state = {
-            thisRoute: this.props.router.params.id
-        }
-
     render() {
         return (
             <div className="container">
-                <PlayerPicture thisRoute={this.state.thisRoute} store={store}/>
+                <PlayerPicture thisRoute={this.props.router.params.id} store={store}/>
                 {/* <SinglePlayer thisRoute={this.state.thisRoute} store={store}/> */}
             </div>
         );
     }
-
 
 }
 

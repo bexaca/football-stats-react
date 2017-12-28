@@ -17,21 +17,16 @@ import Navigation from '../components/Navigation.js'
 //MOBX
 import store from '../base/Store'
 
-export class Header extends React.Component {
-    
-    render() {
-        return (
-            <header>
-                <Favicon url={favico} />
-                <div className="header__logo">
-                    <Link to={"/home"}>
-                        <img src={logo} alt="logo"/>
-                    </Link>
-                </div>
-                <Navigation store={store} />
-            </header>
-        );
-    }
-}
+const Header = () => (
+    <header>
+        <Favicon url={favico} />
+        <div className="header__logo">
+            <Link to={"/home"}>
+                <img src={logo} alt="logo"/>
+            </Link>
+        </div>
+        <Navigation store={store} />
+    </header>
+   )
 
 export default Header;

@@ -11,20 +11,16 @@ import store from '../base/Store'
 
 export class Home extends React.Component {
 
-    state = {
-            thisRoute: this.props.router.params.id
-    }
-
     render() {
         return (
             <div className="container">
-                <FavoriteTeam thisRoute={this.state.thisRoute} store={store}/>
-                <LeagueList thisRoute={this.state.thisRoute} store={store}/>
-                <NextFixtures thisRoute={this.state.thisRoute} store={store}/>
+                <FavoriteTeam thisRoute={this.props.router.params.id} store={store}/>
+                <LeagueList thisRoute={this.props.router.params.id} store={store}/>
+                <NextFixtures thisRoute={this.props.router.params.id} store={store}/>
             </div>
-            
         );
     }
+    
 }
 
 export default Home;
