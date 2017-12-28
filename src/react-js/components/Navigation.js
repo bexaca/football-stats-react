@@ -6,10 +6,9 @@ import {Link} from 'react-router';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
-@inject('Store')
-@observer
 
-class Navigation extends Component {
+@inject('Store')
+@observer class Navigation extends Component {
 
     hideNavigationOverlay() {
         document.getElementById("nav").checked = false;

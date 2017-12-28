@@ -2,11 +2,11 @@
 import React from 'react';
 
 //COMPONENTS
-import LeagueTable from './LeagueTable.js';
-import Fixtures from './Fixtures.js';
+import LeagueTable from '../components/LeagueTable.js';
+import Fixtures from '../components/Fixtures.js';
 
 //MOBX
-import store from './Store'
+import store from '../base/Store'
 
 export class Leagues extends React.Component {
 

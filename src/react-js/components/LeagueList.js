@@ -11,7 +11,7 @@ import {Link} from 'react-router';
 import Preloader from './Preloader.js'
 
 //IMAGES
-import placeholder from '../images/placeholder.png';
+import placeholder from '../../img/placeholder.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'

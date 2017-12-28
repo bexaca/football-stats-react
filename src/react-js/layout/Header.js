@@ -5,17 +5,17 @@ import React from 'react';
 import {Link} from 'react-router';
 
 //IMAGES
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 
 //FAVICON
 import Favicon from 'react-favicon';
-import favico from '../favicon.png';
+import favico from '../../favicon.png';
 
 //COMPONENTS
-import Navigation from './Navigation.js'
+import Navigation from '../components/Navigation.js'
 
 //MOBX
-import store from './Store'
+import store from '../base/Store'
 
 export class Header extends React.Component {
     

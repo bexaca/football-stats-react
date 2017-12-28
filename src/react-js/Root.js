@@ -2,10 +2,10 @@
 import React from 'react';
 
 //COMPONENTS
-import Header from './Header';
+import Header from './layout/Header';
 
 //MOBX
-import store from './Store';
+import store from './base/Store';
 
 export class Root extends React.Component {
     render() {

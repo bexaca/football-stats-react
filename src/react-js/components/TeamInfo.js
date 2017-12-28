@@ -8,7 +8,7 @@ import request from 'superagent';
 import Preloader from './Preloader.js'
 
 //IMAGES
-import placeholderTeam from '../images/placeholder_team.png';
+import placeholderTeam from '../../img/placeholder_team.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'

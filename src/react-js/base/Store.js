@@ -1,4 +1,3 @@
-
 //MOBX
 import {observable, action} from 'mobx';
 
@@ -68,7 +67,6 @@ class Store {
         this.leagueName = leagueName
     }
 }
-
 
 const store = new Store();
 export default store;

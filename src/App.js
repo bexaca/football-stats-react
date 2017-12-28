@@ -9,18 +9,16 @@ import './App.css';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 //COMPONENTS
-import Root from './components/Root';
-import Home from './components/Home';
-import League from './components/League';
-import Team from './components/Team';
-import Player from './components/Player';
+import Root from './react-js/Root';
+import Home from './react-js/pages/Home';
+import League from './react-js/pages/League';
+import Team from './react-js/pages/Team';
+import Player from './react-js/pages/Player';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
 @inject('Store')
-@observer
-
-class App extends React.Component {
+@observer class App extends React.Component {
   render() {
     return (
         <Router history={browserHistory}>

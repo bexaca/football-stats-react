@@ -5,7 +5,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 //IMAGES
-import placeholderTeam from '../images/placeholder_team.png';
+import placeholderTeam from '../../img/placeholder_team.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'

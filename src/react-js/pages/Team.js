@@ -2,14 +2,14 @@
 import React from 'react';
 
 //COMPONENTS
-import PlayerPosition from './PlayerPosition.js';
-import TeamInfo from './TeamInfo.js';
-import TeamFixtures from './TeamFixtures.js';
-import TeamForm from './TeamForm.js';
-import LeagueTable from './LeagueTable.js';
+import PlayerPosition from '../components/PlayerPosition.js';
+import TeamInfo from '../components/TeamInfo.js';
+import TeamFixtures from '../components/TeamFixtures.js';
+import TeamForm from '../components/TeamForm.js';
+import LeagueTable from '../components/LeagueTable.js';
 
 //MOBX
-import store from './Store'
+import store from '../base/Store'
 
 export class Team extends React.Component {
 

@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import Store from './components/Store';
+import Store from './react-js/base/Store';
 import {Provider} from 'mobx-react';
-
-
 
 class Root extends React.Component {
   render() {

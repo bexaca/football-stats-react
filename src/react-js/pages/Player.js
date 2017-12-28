@@ -2,11 +2,11 @@
 import React from 'react';
 
 //COMPONENTS
-import SinglePlayer from './SinglePlayer.js';
-import PlayerPicture from './PlayerPicture.js';
+import SinglePlayer from '../components/SinglePlayer.js';
+import PlayerPicture from '../components/PlayerPicture.js';
 
 //MOBX
-import store from './Store'
+import store from '../base/Store'
 
 export class Team extends React.Component {
 

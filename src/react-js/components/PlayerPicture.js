@@ -11,7 +11,7 @@ import Preloader from './Preloader.js'
 import moment from 'moment';
 
 //IMAGES
-import placeholderPlayer from '../images/placeholder_player.png';
+import placeholderPlayer from '../../img/placeholder_player.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'

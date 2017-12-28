@@ -2,12 +2,12 @@
 import React from 'react';
 
 //COMPONENTS
-import LeagueList from './LeagueList.js';
-import FavoriteTeam from './FavoriteTeam.js';
-import NextFixtures from './NextFixtures.js';
+import LeagueList from '../components/LeagueList.js';
+import FavoriteTeam from '../components/FavoriteTeam.js';
+import NextFixtures from '../components/NextFixtures.js';
 
 //MOBX
-import store from './Store'
+import store from '../base/Store'
 
 export class Home extends React.Component {
 
