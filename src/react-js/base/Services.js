@@ -26,13 +26,13 @@ export const favoriteTeamRemove = () => {
 }
 
 export const favoriteTeamAdd = () => {
-    localStorage.setItem("clubName", store.requestResponse.name);
-    localStorage.setItem("logo", store.requestResponse.crestUrl);
-    localStorage.setItem("teamId", store.requestResponse._links.self.href.split("teams/")[1]);
+    store.favoriteAdd(store.teamInfoApiResponse.name, store.teamInfoApiResponse.crestUrl, store.teamInfoApiResponse._links.self.href.split("teams/")[1])
+    localStorage.setItem("clubName", store.teamInfoApiResponse.name);
+    localStorage.setItem("logo", store.teamInfoApiResponse.crestUrl);
+    localStorage.setItem("teamId", store.teamInfoApiResponse._links.self.href.split("teams/")[1]);
     localStorage.setItem("competitionId", store.competitionId);
     localStorage.setItem("teamPosition", store.teamPosition);
     localStorage.setItem("leagueName", store.leagueName);
-    store.favoriteAdd(store.requestResponse.name, store.requestResponse.crestUrl, store.requestResponse._links.self.href.split("teams/")[1])
     let d = document.getElementById("favorite")
     d.className += " success";
     setTimeout(function(){ 
@@ -55,17 +55,16 @@ export const teamInfoApiRequest = (url, token) => (
                     store.teamInfoApiResponseFunc(res.body)
                     store.teamName(res.body.name)
                     let imgUrl = res.body.crestUrl
-                    let divStyle = null
                     if(imgUrl != null){
                         store.requestDivStyleFunc(
-                            divStyle = {
+                            {
                                 backgroundImage: `url(${imgUrl})`
                             }
                         )
                         
                     } else{
-                        store.requestDivFunc(
-                            divStyle = {
+                        store.requestDivStyleFunc(
+                            {
                                 backgroundImage: `url(${placeholderTeam})`
                             }
                         )
@@ -84,7 +83,6 @@ export const teamInfoApiRequest = (url, token) => (
 )
 
 export const singlePlayerApiRequest = (url, token, route) => {
-    console.log(route)
     request
         .get(url)
         .set('X-Auth-Token', token)
@@ -101,12 +99,19 @@ export const singlePlayerApiRequest = (url, token, route) => {
                 .set('accept', 'json')
                 .then((res) => {
                     store.playerPictureApi2ResponseFunc(res.body)
-                    let divStyle = null
-                    store.requestDivStyleFunc(
-                        divStyle = {
-                            backgroundImage: `url(${(store.playerPictureApi2Response.player[0].strCutout !== null ? store.playerPictureApi2Response.player[0].strCutout : (store.playerPictureApi2Response.player[0].strThumb !== null ? store.playerPictureApi2Response.player[0].strThumb : placeholderPlayer))})`
-                        }
-                    )
+                    if(res.body.player !== null){
+                        store.requestDivStyleFunc(
+                            {
+                                backgroundImage: `url(${(store.playerPictureApi2Response.player[0].strCutout !== null ? store.playerPictureApi2Response.player[0].strCutout : (store.playerPictureApi2Response.player[0].strThumb !== null ? store.playerPictureApi2Response.player[0].strThumb : placeholderPlayer))})`
+                            }
+                        )
+                    } else{
+                        store.requestDivStyleFunc(
+                            {
+                                backgroundImage: `url(${placeholderPlayer})`
+                            }
+                        )
+                    }
                 });
         })
 }
