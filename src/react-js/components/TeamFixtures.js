@@ -84,6 +84,65 @@ import {observer, inject} from 'mobx-react'
             })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.thisRoute !== this.props.thisRoute) {
+            const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
+            const token = "3edb1bdd0041436ebc77c561b73e5e07";
+    
+            request
+                .get(url)
+                .set('X-Auth-Token', token)
+                .set('accept', 'json')
+                .then((res) => {
+                    let date = [];
+                    let result = [];
+                    for (let i = 0; i < res.body.count; i++) {
+                        date.push(res.body.fixtures[i].date);
+                        result.push(res.body.fixtures[i].result);
+                    }
+                    this.setState({
+                        response: res.body,
+                        fixtures: res.body.fixtures,
+                        count: res.body.count,
+                        date: date,
+                        result: result,
+                        teamId: res.body._links.team.href.split('teams/')[1]
+                    })
+                    for(let i = 0; i<res.body.count; i++){
+                        if(res.body.fixtures[i].matchday === 30){
+                            this.setState({
+                                competitionId: res.body.fixtures[i]._links.competition.href.split('competitions/')[1]
+                            })
+                        }
+                    }
+                    this.props.store.competitionIdFunc(this.state.competitionId)
+                })
+                .then((res) => {
+                    const leagueTableUrl = `http://api.football-data.org/v1/competitions/${this.state.competitionId}/leagueTable`;
+                    request
+                        .get(leagueTableUrl)
+                        .set('X-Auth-Token', token)
+                        .set('accept', 'json')
+                        .end((err, res) => {
+                            if (err || !res.ok) {
+                                alert('Oh no! error');
+                            } else {
+                                for (let i = 0; i < res.body.standing.length; i++) {
+                                    if (res.body.standing[i]._links.team.href.split('teams/')[1] === this.state.teamId) {
+                                        this.props.store.teamPositionFunc(res.body.standing[i].position)
+                                    }
+                                }
+                                this.setState({
+                                    responseTable: res.body, 
+                                    leagueName: res.body.leagueCaption
+                                })
+                                this.props.store.leagueNameFunc(this.state.leagueName)
+                            }
+                        });
+                })
+        }
+      }
+
     render() {
         let nextFixtureElements = []
         let pastFixtureElements = []

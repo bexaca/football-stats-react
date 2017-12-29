@@ -101,6 +101,83 @@ import {observer, inject} from 'mobx-react'
                 });
         }
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.thisRoute !== this.props.thisRoute) {
+            if(this.props.from === "team"){
+                const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
+                const token = "3edb1bdd0041436ebc77c561b73e5e07";
+    
+                request
+                    .get(url)
+                    .set('X-Auth-Token', token)
+                    .set('accept', 'json')
+                    .then((res) => {
+                        this.setState({
+                            responseF: res.body
+                        })
+                        for(let i = 0; i<res.body.count; i++){
+                            if(res.body.fixtures[i].matchday === 30){
+                                this.setState({
+                                    leagueId: res.body.fixtures[i]._links.competition.href.split('competitions/')[1]
+                                })
+                            }
+                        }
+                    })
+                    .then((res) =>{
+                        const club = this.props.store.name
+                        const url = `http://api.football-data.org/v1/competitions/${this.state.leagueId}/leagueTable`;
+                        const token = "3edb1bdd0041436ebc77c561b73e5e07";
+                        request
+                            .get(url)
+                            .set('X-Auth-Token', token)
+                            .set('accept', 'json')
+                            .then((res) => {
+                            
+                                    let teamId = [];
+                                    for(let i=0; i<res.body.standing.length; i++){
+                                        teamId.push(res.body.standing[i]._links.team.href);
+                                    }
+                                    this.setState({
+                                        response: res.body,
+                                        leagueName: res.body.leagueCaption,
+                                        leagueStanding: res.body.standing,
+                                        teamUrl: teamId,
+                                        matchDay: res.body.matchday,
+                                        route: this.props.thisRoute,
+                                        clubName: club
+                                    })
+                                    let match = res.body.matchday;
+                                    this.props.store.matchDay(match);
+                            });
+                    })
+            } else {
+                const url = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
+                const token = "3edb1bdd0041436ebc77c561b73e5e07";
+                request
+                    .get(url)
+                    .set('X-Auth-Token', token)
+                    .set('accept', 'json')
+                    .then((res) => {
+                      
+                            let teamId = [];
+                            for(let i=0; i<res.body.standing.length; i++){
+                                teamId.push(res.body.standing[i]._links.team.href);
+                            }
+                            this.setState({
+                                response: res.body,
+                                leagueName: res.body.leagueCaption,
+                                leagueStanding: res.body.standing,
+                                teamUrl: teamId,
+                                matchDay: res.body.matchday,
+                                route: this.props.thisRoute
+                            })
+                            let match = res.body.matchday;
+                            this.props.store.matchDay(match);
+                    });
+            }
+        }
+      }
     
     render() {
         let tableElements = []

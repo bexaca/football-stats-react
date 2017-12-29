@@ -115,3 +115,36 @@ export const singlePlayerApiRequest = (url, token, route) => {
                 });
         })
 }
+
+export const nextFixturesApiRequest = (url, token, route) => {
+    request
+        .get(url)
+        .set('X-Auth-Token', token)
+        .set('accept', 'json')
+        .then((res) => {
+            let date = [];
+            let result = [];
+            for (let i = 0; i < res.body.count; i++) {
+                date.push(res.body.fixtures[i].date);
+                result.push(res.body.fixtures[i].result);
+            }
+            let thisDate = new Date();
+            let thisDateFormat = moment(thisDate).format('dddd, MMMM Do YYYY')
+            let nextFixtureElements = []
+            for(let i = 0; i < 10; i++){
+                let gameDateFormat = moment(res.body.fixtures[i].date).format('dddd, MMMM Do YYYY')
+                if(thisDateFormat === gameDateFormat && res.body.fixtures[i].status === "TIMED"){
+                    nextFixtureElements.push(
+                        <div key={`nextGames-${i}`} className="single__match__block col-md-12">
+                            <div className="col-md-5">{res.body.fixtures[i].homeTeamName}</div>
+                            <div className="col-md-2">
+                                <span>{res.body.fixtures[i].result.goalsHomeTeam} - {res.body.fixtures[i].result.goalsAwayTeam}</span>
+                            </div>
+                            <div className="col-md-5">{res.body.fixtures[i].awayTeamName}</div>
+                        </div>
+                    );
+                }
+            }
+            store.nextFixturesApiResponseFunc(nextFixtureElements)
+        })
+}

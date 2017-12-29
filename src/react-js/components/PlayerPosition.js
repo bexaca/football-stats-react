@@ -48,6 +48,34 @@ import {observer, inject} from 'mobx-react'
             });
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.thisRoute !== this.props.thisRoute) {
+            const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/players`;
+            const token = "3edb1bdd0041436ebc77c561b73e5e07";
+    
+            request
+                .get(url)
+                .set('X-Auth-Token', token)
+                .set('accept', 'json')
+                .end((err, res) => {
+                    if (err || !res.ok) {
+                        alert('Oh no! error');
+                    } else {
+                        let position = [];
+                        for(let i=0; i<res.body.count; i++){
+                            position.push(res.body.players[i].position);
+                        }
+                        
+                        this.setState({
+                            response: res.body,
+                            count: res.body.count,
+                            position: position
+                        })
+                    }
+                });
+        }
+      }
+
 
     render() {
         let keeperElements = []

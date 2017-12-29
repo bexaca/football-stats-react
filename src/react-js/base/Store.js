@@ -19,6 +19,7 @@ class Store {
     @observable requestButton = null
     @observable playerPictureApiResponse = null
     @observable playerPictureApi2Response = null
+    @observable nextFixturesApiResponse = null
      
     @action matchDay = (match) => {
         this.match = match
@@ -79,6 +80,9 @@ class Store {
     }
     @action playerPictureApi2ResponseFunc = (playerPictureApi2Response) => {
         this.playerPictureApi2Response = playerPictureApi2Response
+    }
+    @action nextFixturesApiResponseFunc = (nextFixturesApiResponse) => {
+        this.nextFixturesApiResponse = nextFixturesApiResponse
     }
     @action requestDivStyleFunc = (requestDivStyle) => {
         this.requestDivStyle = requestDivStyle

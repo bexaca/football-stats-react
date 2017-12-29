@@ -23,7 +23,7 @@ export class Leagues extends React.Component {
 
     render() {
         return (
-            <div key={this.props.router.location.key} className="container">
+            <div className="container">
                 <LeagueTable thisRoute={this.state.thisRoute} store={store} from={"league"}/>
                 <Fixtures thisRoute={this.state.thisRoute} store={store}/>
             </div>

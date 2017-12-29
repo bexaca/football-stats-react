@@ -74,6 +74,53 @@ import {observer, inject} from 'mobx-react'
             })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.thisRoute !== this.props.thisRoute) {
+            const urlTable = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/leagueTable`;
+            const token = "3edb1bdd0041436ebc77c561b73e5e07";
+            request
+                .get(urlTable)
+                .set('X-Auth-Token', token)
+                .set('accept', 'json')
+                .then((res) => {
+                    this.setState({
+                        matchDay: res.body.matchday,
+                        route: this.props.thisRoute,
+                        response2: res.body
+                    })
+                })
+                .then((res) => {
+                    const urlFixture = `http://api.football-data.org/v1/competitions/${this.props.thisRoute}/fixtures?matchday=${this.state.matchDay}`;
+                    request
+                        .get(urlFixture)
+                        .set('X-Auth-Token', token)
+                        .set('accept', 'json')
+                        .end((err, res) => {
+                            if (err || !res.ok) {
+                                alert('Oh no! error');
+                            } else {
+                                let date = [];
+                                let result = [];
+                                let odds = []
+                                for (let i = 0; i < res.body.count; i++) {
+                                    date.push(res.body.fixtures[i].date);
+                                    result.push(res.body.fixtures[i].result);
+                                    odds.push(res.body.fixtures[i].odds)
+                                }
+                                this.setState({
+                                    response: res.body, 
+                                    fixtures: res.body.fixtures, 
+                                    count: res.body.count, 
+                                    date: date, 
+                                    result: result,
+                                    odds: odds
+                                })
+                            }
+                        });
+                })
+        }
+      }
+
     render() {
         let fixtureElements = []
         let dates = new Set()

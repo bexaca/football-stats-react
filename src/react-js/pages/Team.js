@@ -26,7 +26,7 @@ export class Team extends React.Component {
 
     render() {
         return (
-            <div className="container" key={this.props.router.location.key}>
+            <div className="container">
                 <TeamInfo thisRoute={this.state.thisRoute} store={store}/>
                 <PlayerPosition thisRoute={this.state.thisRoute} store={store}/>
                 <TeamFixtures thisRoute={this.state.thisRoute} store={store}/>

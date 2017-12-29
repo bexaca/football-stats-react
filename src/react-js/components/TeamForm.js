@@ -48,6 +48,37 @@ import {observer, inject} from 'mobx-react'
                 }
             });
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.thisRoute !== this.props.thisRoute) {
+            this.props.store.formResetFunc()
+            const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute}/fixtures`;
+            const token = "3edb1bdd0041436ebc77c561b73e5e07";
+    
+            request
+                .get(url)
+                .set('X-Auth-Token', token)
+                .set('accept', 'json')
+                .end((err, res) => {
+                    if (err || !res.ok) {
+                        alert('Oh no! error');
+                    } else {
+                        let status = [];
+                        for(let i=0; i<res.body.count; i++){
+                            if(res.body.fixtures[i].status === "FINISHED"){
+                                status.push(res.body.fixtures[i]);
+                            }
+                        }
+                        this.setState({
+                            response: res.body,
+                            fixtures: res.body.fixtures,
+                            count: res.body.count,
+                            status: status
+                        })
+                    }
+                });
+        }
+      }
     
     formLess() {
         this.props.store.formLessFunc()
