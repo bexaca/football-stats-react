@@ -1,11 +1,14 @@
 //REACT
 import React from 'react';
 
-//SUPER AGENT
-import request from 'superagent';
+// //SUPER AGENT
+// import request from 'superagent';
 
 //COMPONENTS
 import Preloader from './Preloader.js'
+
+//SERVICES
+import {singlePlayerApiRequest} from '../base/Services'
 
 //MOMENT DATE
 import moment from 'moment';
@@ -15,156 +18,84 @@ import placeholderPlayer from '../../img/placeholder_player.png';
 
 //MOBX
 import {observer, inject} from 'mobx-react'
+import { routerShape } from 'react-router/lib/PropTypes';
 
 @inject('Store') @observer export class PlayerPicture extends React.Component {
-    
-    state = {
-            response: null,
-            playerName: null,
-            playerDesc: null,
-            playerImg: null,
-            playerBirth: null,
-            playerContSt: null,
-            playerHeight: null,
-            playerWeight: null,
-            playerNation: null,
-            playerPosit: null,
-            playerPrice: null,
-            playerTeam: null,
-            playerWage: null,
-            playerNameS: null,
-            response1: null,
-            responseName: null,
-            playersNumber: null,
-            playerThumb: null,
-            playerBirthLoc: null
-        }
-
+  
     componentDidMount() {
         const url = `http://api.football-data.org/v1/teams/${this.props.thisRoute[0]}/players`;
         const token = "3edb1bdd0041436ebc77c561b73e5e07";
-
-        request
-                .get(url)
-                .set('X-Auth-Token', token)
-                .set('accept', 'json')
-                .then((res) => {
-                    let playerId = this.props.thisRoute[1]
-                    this.setState({
-                        playerNameS: res.body.players[playerId].name.replace(' ', '%20'),
-                        playerName: res.body.players[playerId].name,
-                        playerBirth: res.body.players[playerId].dateOfBirth,
-                        playerNumber: res.body.players[playerId].jerseyNumber,
-                        playerNation: res.body.players[playerId].nationality,
-                        playerPosit: res.body.players[playerId].position,
-                        playerContLen: res.body.players[playerId].contractUntil,
-                        response1: res.body,
-                    })
-                })
-                .then((res) =>{
-                    let apiKey = '4012828';
-                    const url = `http://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=${this.state.playerNameS}`;
-                    request
-                        .get(url)
-                        .set('accept', 'json')
-                        .then((res) => {
-                            this.setState({
-                                response: res.body,
-                                responseName: res.body.player,
-                            })
-                            if(this.state.responseName !== null){
-                                this.setState({
-                                    playerDesc: res.body.player[0].strDescriptionEN,
-                                    playerImg: res.body.player[0].strCutout,
-                                    playerContSt: res.body.player[0].dateSigned,
-                                    playerHeight: res.body.player[0].strHeight,
-                                    playerWeight: res.body.player[0].strWeight,
-                                    playerPrice: res.body.player[0].strSigning,
-                                    playerTeam: res.body.player[0].strTeam,
-                                    playerWage: res.body.player[0].strWage,
-                                    playerThumb: res.body.player[0].strThumb,
-                                    playerBirthLoc: res.body.player[0].strBirthLocation
-                                })
-                            } 
-                        });
-                })
+        singlePlayerApiRequest(url, token, this.props.thisRoute[1])
     }
 
-
     render() {
-        console.log(this.state.response)
-        console.log(this.state.response1)
-        const response = this.state.response
-        let divStyle = {
-            backgroundImage: `url(${(this.state.playerImg !== null ? this.state.playerImg : (this.state.playerThumb !== null ? this.state.playerThumb: placeholderPlayer))})`
-        };
-        if (response != null) {
+        if (this.props.store.playerPictureApi2Response != null) {
             return (
                 <div className="player__info">
                     <div className="col-md-12 text-center">
-                        <div className="image__block" style={divStyle}></div>
+                        <div className="image__block" style={this.props.store.requestDivStyle}></div>
                         <h4>Player name</h4>
                         <p>
-                            <a target="_blank" href={`https://en.wikipedia.org/wiki/${this.state.playerName.replace(" ", "_")}`}>
-                                {this.state.playerName}
+                            <a target="_blank" href={`https://en.wikipedia.org/wiki/${this.props.store.playerPictureApiResponse.players[this.props.thisRoute[1]].name.replace(" ", "_")}`}>
+                                {this.props.store.playerPictureApiResponse.players[this.props.thisRoute[1]].name}
                             </a>
                         </p>
                         <h4>Date of birth</h4>
-                        <p>{moment(this.state.playerBirth).format('MMMM Do YYYY')}</p>
+                        <p>{moment(this.props.store.playerPictureApiResponse.players[this.props.thisRoute[1].dateOfBirth]).format('MMMM Do YYYY')}</p>
                         {
-                            (this.state.playerBirthLoc !== "" && this.state.playerBirthLoc !== null) ?
+                            (this.props.store.playerPictureApi2Response.player[0].strBirthLocation !== "" && this.props.store.playerPictureApi2Response.player[0].strBirthLocation !== null) ?
                             <div className="info__block">
                                 <h4>Birthplace</h4>
-                                <p>{this.state.playerBirthLoc}</p>
+                                <p>{this.props.store.playerPictureApi2Response.player[0].strBirthLocation}</p>
                             </div>    
                             :
                             <div></div>                        
                         }
                         <h4>Nationality</h4>
-                        <p>{this.state.playerNation}</p>
+                        <p>{this.props.store.playerPictureApiResponse.players[this.props.thisRoute[1]].nationality}</p>
                         <h4>Position</h4>
-                        <p>{this.state.playerPosit}</p>
+                        <p>{this.props.store.playerPictureApiResponse.players[this.props.thisRoute[1].position]}</p>
                         {
-                            (this.state.playerHeight !== "" && this.state.playerHeight !== null) ?
+                            (this.props.store.playerPictureApi2Response.player[0].strHeight !== "" && this.props.store.playerPictureApi2Response.player[0].strHeight !== null) ?
                             <div className="info__block">
                                 <h4>Height</h4>
-                                <p>{this.state.playerHeight} m</p>
+                                <p>{this.props.store.playerPictureApi2Response.player[0].strHeight} m</p>
                             </div>    
                             :
                             <div></div>                        
                         }
                         {
-                            (this.state.playerWeight !== "" && this.state.playerWeight !== null) ?
+                            (this.props.store.playerPictureApi2Response.player[0].strWeight !== "" && this.props.store.playerPictureApi2Response.player[0].strWeight !== null) ?
                             <div className="info__block">
                                 <h4>Weight</h4>
-                                <p>{Math.round(this.state.playerWeight)} kg</p>
+                                <p>{Math.round(this.props.store.playerPictureApi2Response.player[0].strWeight)} kg</p>
                             </div>    
                             :
                             <div></div>                        
                         }
                         {
-                            (this.state.playerContSt !== null) ? 
+                            (this.props.store.playerPictureApi2Response.player[0].dateSigned !== null) ? 
                             <div className="info__block">
                                 <h4>Contract signed</h4>
-                                <p>{moment(this.state.playerContSt).format('MMMM Do YYYY')}</p>
+                                <p>{moment(this.props.store.playerPictureApi2Response.player[0].dateSigned).format('MMMM Do YYYY')}</p>
                             </div> 
                             : 
                             <div></div>
                         }
                          {
-                            (this.state.playerPrice !== null && this.state.playerPrice !== "") ? 
+                            (this.props.store.playerPictureApi2Response.player[0].strSigning !== null && this.props.store.playerPictureApi2Response.player[0].strSigning !== "") ? 
                             <div className="info__block">
                                 <h4>Transfer fee</h4>
-                                <p>{this.state.playerPrice}</p>
+                                <p>{this.props.store.playerPictureApi2Response.player[0].strSigning}</p>
                             </div> 
                             : 
                             <div></div>
                         }
                         {
-                            (this.state.playerDesc !== null) ? 
+                            (this.props.store.playerPictureApi2Response.player[0].strDescriptionEN !== null) ? 
                                 <div className="info__block">
                                     <h4>Bio</h4>
-                                    <p>{this.state.playerDesc}</p>
+                                    <p>{this.props.store.playerPictureApi2Response.player[0].strDescriptionEN}</p>
                                 </div>
                                 :
                                 <div></div>

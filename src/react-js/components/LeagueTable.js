@@ -49,7 +49,7 @@ import {observer, inject} from 'mobx-react'
                     }
                 })
                 .then((res) =>{
-                    const club = document.getElementById("club__name").innerHTML
+                    const club = this.props.store.name
                     const url = `http://api.football-data.org/v1/competitions/${this.state.leagueId}/leagueTable`;
                     const token = "3edb1bdd0041436ebc77c561b73e5e07";
                     request

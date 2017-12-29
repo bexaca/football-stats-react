@@ -14,9 +14,11 @@ class Store {
     @observable leagueName = localStorage.getItem("leagueName")
     @observable leaguesId = [localStorage.getItem("leagueIdPl"), localStorage.getItem("leagueIdFl"), localStorage.getItem("leagueIdBl"), localStorage.getItem("leagueIdSa"), localStorage.getItem("leagueIdPr")]
     @observable leaguesName = [localStorage.getItem("leagueNamePl"), localStorage.getItem("leagueNameFl"), localStorage.getItem("leagueNameBl"), localStorage.getItem("leagueNameSa"), localStorage.getItem("leagueNamePr")]
-    @observable requestResponse = null
-    @observable requestDiv = null
+    @observable teamInfoApiResponse = null
+    @observable requestDivStyle = null
     @observable requestButton = null
+    @observable playerPictureApiResponse = null
+    @observable playerPictureApi2Response = null
      
     @action matchDay = (match) => {
         this.match = match
@@ -69,11 +71,17 @@ class Store {
     @action leagueNameFunc = (leagueName) => {
         this.leagueName = leagueName
     }
-    @action requestResponseFunc = (requestResponse) => {
-        this.requestResponse = requestResponse
+    @action teamInfoApiResponseFunc = (teamInfoApiResponse) => {
+        this.teamInfoApiResponse = teamInfoApiResponse
     }
-    @action requestDivFunc = (requestDiv) => {
-        this.requestDiv = requestDiv
+    @action playerPictureApiResponseFunc = (playerPictureApiResponse) => {
+        this.playerPictureApiResponse = playerPictureApiResponse
+    }
+    @action playerPictureApi2ResponseFunc = (playerPictureApi2Response) => {
+        this.playerPictureApi2Response = playerPictureApi2Response
+    }
+    @action requestDivStyleFunc = (requestDivStyle) => {
+        this.requestDivStyle = requestDivStyle
     }
     @action requestButtonFunc = (requestButton) => {
         this.requestButton = requestButton

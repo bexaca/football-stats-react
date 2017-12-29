@@ -65,7 +65,7 @@ import {observer, inject} from 'mobx-react'
             );
         }
         return (
-            <div></div>
+            null
         );
     }
 }
